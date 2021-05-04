@@ -99,3 +99,9 @@ card& cardHeap::peekCard(int index)
                                                          //但按理来说可以避免遇到这种错误的情况
     return cards[index];
 }
+
+void cardHeap::removeAllCards()
+{
+    cards.clear();
+    cards.shrink_to_fit();
+}
