@@ -33,5 +33,6 @@ public:
     card& fetchCard();
     void insertCard(card& cardToInsert);
     card& peekCard(int index);
+    void removeAllCards();
 };
 
