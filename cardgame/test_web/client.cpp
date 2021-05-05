@@ -8,34 +8,34 @@ using namespace std;
 void initialization();
 int main() {
 
-	//¶¨Òå³¤¶È±äÁ¿
+	//å®šä¹‰é•¿åº¦å˜é‡
 	int send_len = 0;
 	int recv_len = 0;
-	//¶¨Òå·¢ËÍ»º³åÇøºÍ½ÓÊÜ»º³åÇø
+	//å®šä¹‰å‘é€ç¼“å†²åŒºå’Œæ¥å—ç¼“å†²åŒº
 	char send_buf[100];
 
 	winSock w;
 	w.setServerInf(8888);
 	w.connectSock();
  
-	//·¢ËÍ,½ÓÊÕÊı¾İ
+	//å‘é€,æ¥æ”¶æ•°æ®
 	while (1) {
-		cout << "ÇëÊäÈë·¢ËÍĞÅÏ¢:";
+		cout << "è¯·è¾“å…¥å‘é€ä¿¡æ¯:";
 		cin >> send_buf;
 		send_len = w.Send(send_buf);
 		if (send_len < 0) {
-			cout << "·¢ËÍÊ§°Ü£¡" << endl;
+			cout << "å‘é€å¤±è´¥ï¼" << endl;
 			break;
 		}
 		struct Message m;
 		m = w.Recv();
 		recv_len = m.recvByte;
 		if (recv_len < 0) {
-			cout << "½ÓÊÜÊ§°Ü£¡" << endl;
+			cout << "æ¥å—å¤±è´¥ï¼" << endl;
 			break;
 		}
 		else {
-			cout << "·şÎñ¶ËĞÅÏ¢:" << m.recv_buf << endl;
+			cout << "æœåŠ¡ç«¯ä¿¡æ¯:" << m.recv_buf << endl;
 		}
 	}
 	
