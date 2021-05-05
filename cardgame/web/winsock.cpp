@@ -4,29 +4,29 @@ using namespace std;
 
 winSock::winSock() 
 {
-	//³õÊ¼»¯Ì×½Ó×Ö¿â
-	WORD w_req = MAKEWORD(2, 2);//°æ±¾ºÅ
+	//åˆå§‹åŒ–å¥—æ¥å­—åº“
+	WORD w_req = MAKEWORD(2, 2);//ç‰ˆæœ¬å·
 	WSADATA wsadata;
 	int err;
 	err = WSAStartup(w_req, &wsadata);
 	if (err != 0) 
-		cout << "³õÊ¼»¯Ì×½Ó×Ö¿âÊ§°Ü£¡" << endl;
+		cout << "åˆå§‹åŒ–å¥—æ¥å­—åº“å¤±è´¥ï¼" << endl;
 	else 
-		cout << "³õÊ¼»¯Ì×½Ó×Ö¿â³É¹¦£¡" << endl;
-	//¼ì²â°æ±¾ºÅ
+		cout << "åˆå§‹åŒ–å¥—æ¥å­—åº“æˆåŠŸï¼" << endl;
+	//æ£€æµ‹ç‰ˆæœ¬å·
 	if (LOBYTE(wsadata.wVersion) != 2 || HIBYTE(wsadata.wHighVersion) != 2) {
-		cout << "Ì×½Ó×Ö¿â°æ±¾ºÅ²»·û£¡" << endl;
+		cout << "å¥—æ¥å­—åº“ç‰ˆæœ¬å·ä¸ç¬¦ï¼" << endl;
 		WSACleanup();
 	}
 	else 
-		cout << "Ì×½Ó×Ö¿â°æ±¾ÕıÈ·£¡" << endl;
-	//´´½¨Ì×½Ó×Ö
+		cout << "å¥—æ¥å­—åº“ç‰ˆæœ¬æ­£ç¡®ï¼" << endl;
+	//åˆ›å»ºå¥—æ¥å­—
 	s_server = socket(AF_INET, SOCK_STREAM, 0);
 }
 	
 void winSock::setServerInf(int host) 
 {
-	//Ìî³ä·şÎñ¶ËĞÅÏ¢
+	//å¡«å……æœåŠ¡ç«¯ä¿¡æ¯
 	server_addr.sin_family = AF_INET;
 	server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	server_addr.sin_port = htons(host);
@@ -34,27 +34,27 @@ void winSock::setServerInf(int host)
 	
 void winSock::bindSock() 
 {
-	// Ì×½Ó×Ö°ó¶¨ 
+	// å¥—æ¥å­—ç»‘å®š 
 	if (bind(s_server, (SOCKADDR *)&server_addr, sizeof(SOCKADDR)) == SOCKET_ERROR) {
-		cout << "Ì×½Ó×Ö°ó¶¨Ê§°Ü£¡" << endl;
+		cout << "å¥—æ¥å­—ç»‘å®šå¤±è´¥ï¼" << endl;
 		WSACleanup();
 	}
 	else 
-		cout << "Ì×½Ó×Ö°ó¶¨³É¹¦£¡" << endl;
+		cout << "å¥—æ¥å­—ç»‘å®šæˆåŠŸï¼" << endl;
 }
 	
-	/* ×èÈû 
+	/* é˜»å¡ 
 	void listenSock() {
-		//°Ñ ¼àÌıÌ×½Ó×Ö ÉèÖÃÎª·Ç×èÈû, ÕâÑùrecv()ºÍaccept()¾ÍÎª·Ç×èÈûÁË
+		//æŠŠ ç›‘å¬å¥—æ¥å­— è®¾ç½®ä¸ºéé˜»å¡, è¿™æ ·recv()å’Œaccept()å°±ä¸ºéé˜»å¡äº†
     //	unsigned long ulMode = 1;
     //	ioctlsocket(s_server, FIONBIO, &ulMode);
-		//ÉèÖÃÌ×½Ó×ÖÎª¼àÌı×´Ì¬
+		//è®¾ç½®å¥—æ¥å­—ä¸ºç›‘å¬çŠ¶æ€
 		if (listen(s_server, SOMAXCONN) < 0) {
-			cout << "ÉèÖÃ¼àÌı×´Ì¬Ê§°Ü£¡" << endl;
+			cout << "è®¾ç½®ç›‘å¬çŠ¶æ€å¤±è´¥ï¼" << endl;
 			WSACleanup();
 		}
 		else {
-			cout << "ÉèÖÃ¼àÌı×´Ì¬³É¹¦£¡" << endl;
+			cout << "è®¾ç½®ç›‘å¬çŠ¶æ€æˆåŠŸï¼" << endl;
 		}
 	} 
 	
@@ -63,37 +63,37 @@ void winSock::bindSock()
 		cout<<s_server<<endl;
 		s_accept = accept(s_server, (SOCKADDR *)&accept_addr, &len);
 		if (s_accept == SOCKET_ERROR) {
-			cout << "Á¬½ÓÊ§°Ü£¡" << endl;
+			cout << "è¿æ¥å¤±è´¥ï¼" << endl;
 			WSACleanup();
 			return 0;
 		}
-		cout << "Á¬½Ó½¨Á¢£¬×¼±¸½ÓÊÜÊı¾İ" << endl;
+		cout << "è¿æ¥å»ºç«‹ï¼Œå‡†å¤‡æ¥å—æ•°æ®" << endl;
 		return s_accept;
 	}*/ 
 	
-	// ·Ç×èÈû 
+	// éé˜»å¡ 
 void winSock::listenSock()
 {
-	//°Ñ ¼àÌıÌ×½Ó×Ö ÉèÖÃÎª·Ç×èÈû, ÕâÑùrecv()ºÍaccept()¾ÍÎª·Ç×èÈûÁË
+	//æŠŠ ç›‘å¬å¥—æ¥å­— è®¾ç½®ä¸ºéé˜»å¡, è¿™æ ·recv()å’Œaccept()å°±ä¸ºéé˜»å¡äº†
     unsigned long ulMode = 1;
    	ioctlsocket(s_server, FIONBIO, &ulMode);
-	//ÉèÖÃÌ×½Ó×ÖÎª¼àÌı×´Ì¬
+	//è®¾ç½®å¥—æ¥å­—ä¸ºç›‘å¬çŠ¶æ€
 	if (listen(s_server, SOMAXCONN) < 0) {
-		cout << "ÉèÖÃ¼àÌı×´Ì¬Ê§°Ü£¡" << endl;
+		cout << "è®¾ç½®ç›‘å¬çŠ¶æ€å¤±è´¥ï¼" << endl;
 		WSACleanup();
 	}
 	else 
-		cout << "ÉèÖÃ¼àÌı×´Ì¬³É¹¦£¡" << endl;
+		cout << "è®¾ç½®ç›‘å¬çŠ¶æ€æˆåŠŸï¼" << endl;
 } 
 
 void winSock::connectSock()
 {
 	if (connect(s_server, (SOCKADDR *)&server_addr, sizeof(SOCKADDR)) == SOCKET_ERROR) {
-		cout << "·şÎñÆ÷Á¬½ÓÊ§°Ü£¡" << endl;
+		cout << "æœåŠ¡å™¨è¿æ¥å¤±è´¥ï¼" << endl;
 		WSACleanup();
 	}
 	else {
-		cout << "·şÎñÆ÷Á¬½Ó³É¹¦£¡" << endl;
+		cout << "æœåŠ¡å™¨è¿æ¥æˆåŠŸï¼" << endl;
 	}
 }
 	
@@ -130,10 +130,10 @@ int winSock::Send(int sock, char message[])
 	
 void winSock::closeSock()
 {
-	//ÊÍ·Å·şÎñÆ÷×ÊÔ´
+	//é‡Šæ”¾æœåŠ¡å™¨èµ„æº
    	closesocket(s_server);
 	closesocket(s_accept);
-  	//ÊÍ·Å×ÊÔ´
+  	//é‡Šæ”¾èµ„æº
   	WSACleanup();
 } 
 
