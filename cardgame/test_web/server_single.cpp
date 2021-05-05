@@ -3,9 +3,9 @@
 using namespace std;
 void initialization();
 int main() {
-	//¶¨Òå·¢ËÍ»º³åÇø
+	//å®šä¹‰å‘é€ç¼“å†²åŒº
 	char send_buf[100];
-	//¶¨Òå½ÓÊÜÇëÇóÌ×½Ó×Ö
+	//å®šä¹‰æ¥å—è¯·æ±‚å¥—æ¥å­—
 	SOCKET s_accept;
 	winSock w;
 	w.setServerInf(8888);
@@ -16,19 +16,19 @@ int main() {
 		if (s_accept == SOCKET_ERROR)
 			continue;
 		else if(s_accept != INVALID_SOCKET) {
-			cout << "Á¬½Ó½¨Á¢£¬×¼±¸½ÓÊÜÊı¾İ" << endl;
+			cout << "è¿æ¥å»ºç«‹ï¼Œå‡†å¤‡æ¥å—æ•°æ®" << endl;
 			break;
 		}
 	}
-	//½ÓÊÕÊı¾İ
+	//æ¥æ”¶æ•°æ®
 	while (1) {
 		struct Message m;
 		m = w.Recv(s_accept);
 		if (m.recvByte < 0)
 			continue;
 		else
-			cout << "¿Í»§¶ËĞÅÏ¢:" << m.recv_buf << endl;
-		cout << "ÇëÊäÈë»Ø¸´ĞÅÏ¢:";
+			cout << "å®¢æˆ·ç«¯ä¿¡æ¯:" << m.recv_buf << endl;
+		cout << "è¯·è¾“å…¥å›å¤ä¿¡æ¯:";
 		cin >> send_buf;
 		w.Send(s_accept, send_buf);
 	}
