@@ -1,3 +1,7 @@
+# 提醒事项
+使用 vscode **Doxygen Documentation Generator** 插件
+写关于函数或者结构体的注释
+
 # 任务分配
 
 1：qt的使用以及界面设计（一人）
