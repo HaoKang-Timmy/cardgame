@@ -25,7 +25,7 @@ int main(){
         sockaddr_in remoteAddr{};
         int size = sizeof(remoteAddr);
         while(true){
-            //½ÓÊÜÔ¶³ÌÀ´Á¬½Ó
+            //æ¥å—è¿œç¨‹æ¥è¿æ¥
             this_thread::sleep_for(chrono::milliseconds(100));
             int remoteSock = w.acceptSock();
             if(remoteSock==-1)
@@ -33,7 +33,7 @@ int main(){
             if(remoteSock != INVALID_SOCKET){
                 lock_guard<std::mutex> mtx_locker(mtx);
                 remote.emplace_back(remoteSock);
-                cout<<"³É¹¦¼ÓÈëÒ»¸öclient:"<<remoteSock<<endl;
+                cout<<"æˆåŠŸåŠ å…¥ä¸€ä¸ªclient:"<<remoteSock<<endl;
                 //Respond(remoteSock);
             }
         }
@@ -44,7 +44,7 @@ int main(){
         char send_buf[maxSize];
         int recvBytes;
         while(true){
-            //0.3s¼ì²âÒ»´Î,Ò»¶¨ÒªÓĞ²»È»cpuÕ¼ÓÃ»áºÜ´óµÄ
+            //0.3sæ£€æµ‹ä¸€æ¬¡,ä¸€å®šè¦æœ‰ä¸ç„¶cpuå ç”¨ä¼šå¾ˆå¤§çš„
             this_thread::sleep_for(chrono::milliseconds(300));
             lock_guard<std::mutex> mtx_locker(mtx);
             for(auto iter = remote.begin();iter != remote.end();){
@@ -52,14 +52,14 @@ int main(){
                 recvBytes = m.recvByte;
                 if(recvBytes == 0){
                     iter = remote.erase(iter);
-                    cout<<"¿Í»§¶Ë:"<<*iter<<"Á¬½Ó´íÎó³É¹¦ÒÆ³ı"<<endl;
+                    cout<<"å®¢æˆ·ç«¯:"<<*iter<<"è¿æ¥é”™è¯¯æˆåŠŸç§»é™¤"<<endl;
                     continue;
                 } else if(recvBytes<0){
                     ++iter;
                 }
                 else{
-                    cout<< "´Ó¿Í»§¶Ë½ÓÊÕµ½ĞÅÏ¢:" << m.recv_buf << " from sock : " << *iter << endl;
-                    cout << "ÇëÊäÈë»Ø¸´ĞÅÏ¢:";
+                    cout<< "ä»å®¢æˆ·ç«¯æ¥æ”¶åˆ°ä¿¡æ¯:" << m.recv_buf << " from sock : " << *iter << endl;
+                    cout << "è¯·è¾“å…¥å›å¤ä¿¡æ¯:";
 					cin >> send_buf;
 					w.Send(*iter, send_buf);
                     ++iter;
