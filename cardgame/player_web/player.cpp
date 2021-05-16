@@ -28,6 +28,7 @@ int player::get_score()
 void player::player_fetchCard(card card_fetched)
 {
     this->playerHeap.insertCard(card_fetched);
+    score+=card_fetched.getPoint();
     return;
 }
 /**

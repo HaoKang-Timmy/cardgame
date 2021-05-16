@@ -10,11 +10,12 @@ private:
     bool round;// if it is 1, it is this player has go through this turn
 public:
     player();
-    ~player();
+    ~player(){};
     int get_score();//used to show this player's score in a turn
-    card& player_fetchCard();//get card from card Heap in a game
-    void winning();// a flag to show whether he is winning or not
-    void turn_to_round();// change flag round
+    void player_fetchCard(card card_fetched);//get card from card Heap in a game
+    void set_win(bool a);// a flag to show whether he is winning or not
+    void set_round(bool a);// change flag round
+    void set_score(int a);
     void init_player();//used to set to next round
-
+    
 };
