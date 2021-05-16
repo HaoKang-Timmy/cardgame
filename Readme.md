@@ -1,3 +1,14 @@
+# Socket 网络库使用方法
+参考test_web
+初始化
+winsock w 创建套接字
+w.setServerInf(8888); 设置端口
+w.bindSock(); 绑定套接字
+服务端
+w.listenSock(); 监听
+客户端
+w.connectSock(); 连接
+使用多线程同时和多个客户端通信
 # 提醒事项
 使用 vscode **Doxygen Documentation Generator** 插件
 写关于函数或者结构体的注释
