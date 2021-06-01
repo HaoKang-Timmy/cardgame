@@ -29,7 +29,12 @@ int main()
                 }
                 else if(judge=='n')
                     break;
+                else 
+                    break;
             }
+            if(judge=='q')
+                break;
+
 
 
         }

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/timmy/Documents/cpp/cardgame/cardgame/game/card.cpp
+iostream
+-
+ctime
+-
+algorithm
+-
+card.h
+/home/timmy/Documents/cpp/cardgame/cardgame/game/card.h
+
+/home/timmy/Documents/cpp/cardgame/cardgame/game/deck.cpp
+
+/home/timmy/Documents/cpp/cardgame/cardgame/game/main.cpp
+iostream
+-
+card.h
+/home/timmy/Documents/cpp/cardgame/cardgame/game/card.h
+player.h
+/home/timmy/Documents/cpp/cardgame/cardgame/game/player.h
+
+include/card.h
+iostream
+-
+vector
+-
+
+include/player.h
+iostream
+-
+card.h
+include/card.h
+

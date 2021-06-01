@@ -1,0 +1,3 @@
+/home/timmy/Documents/cpp/cardgame/CMakeFiles/rebuild_cache.dir
+/home/timmy/Documents/cpp/cardgame/CMakeFiles/edit_cache.dir
+/home/timmy/Documents/cpp/cardgame/CMakeFiles/test.dir
