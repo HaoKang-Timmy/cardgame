@@ -1,3 +1,5 @@
+#ifndef CARD_H
+#define CARD_H
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -36,3 +38,4 @@ public:
     void removeAllCards();
 };
 
+#endif
