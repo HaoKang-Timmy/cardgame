@@ -1,3 +1,5 @@
+#ifndef PLAYER_H
+#define PLAYER_H
 #include<iostream>
 #include"card.h"
 // used to make a class for player
@@ -19,3 +21,4 @@ public:
     void init_player();//used to set to next round
     
 };
+#endif

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/test.dir/cardgame/game/card.cpp.o"
   "CMakeFiles/test.dir/cardgame/game/deck.cpp.o"
   "CMakeFiles/test.dir/cardgame/game/main.cpp.o"
+  "CMakeFiles/test.dir/cardgame/player_web/player.cpp.o"
   "test"
   "test.pdb"
 )

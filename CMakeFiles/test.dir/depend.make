@@ -10,3 +10,7 @@ CMakeFiles/test.dir/cardgame/game/main.cpp.o: cardgame/game/main.cpp
 CMakeFiles/test.dir/cardgame/game/main.cpp.o: include/card.h
 CMakeFiles/test.dir/cardgame/game/main.cpp.o: include/player.h
 
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.o: cardgame/player_web/player.cpp
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.o: include/card.h
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.o: include/player.h
+

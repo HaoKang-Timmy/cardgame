@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/timmy/Documents/cpp/cardgame
+CMAKE_SOURCE_DIR = /mnt/e/learn/SECOND_DOWN/oop/cardgame
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/timmy/Documents/cpp/cardgame
+CMAKE_BINARY_DIR = /mnt/e/learn/SECOND_DOWN/oop/cardgame
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timmy/Documents/cpp/cardgame/CMakeFiles /home/timmy/Documents/cpp/cardgame/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles /mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timmy/Documents/cpp/cardgame/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -204,6 +204,33 @@ cardgame/game/main.cpp.s:
 	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/cardgame/game/main.cpp.s
 .PHONY : cardgame/game/main.cpp.s
 
+cardgame/player_web/player.o: cardgame/player_web/player.cpp.o
+
+.PHONY : cardgame/player_web/player.o
+
+# target to build an object file
+cardgame/player_web/player.cpp.o:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/cardgame/player_web/player.cpp.o
+.PHONY : cardgame/player_web/player.cpp.o
+
+cardgame/player_web/player.i: cardgame/player_web/player.cpp.i
+
+.PHONY : cardgame/player_web/player.i
+
+# target to preprocess a source file
+cardgame/player_web/player.cpp.i:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/cardgame/player_web/player.cpp.i
+.PHONY : cardgame/player_web/player.cpp.i
+
+cardgame/player_web/player.s: cardgame/player_web/player.cpp.s
+
+.PHONY : cardgame/player_web/player.s
+
+# target to generate assembly for a file
+cardgame/player_web/player.cpp.s:
+	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/cardgame/player_web/player.cpp.s
+.PHONY : cardgame/player_web/player.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -222,6 +249,9 @@ help:
 	@echo "... cardgame/game/main.o"
 	@echo "... cardgame/game/main.i"
 	@echo "... cardgame/game/main.s"
+	@echo "... cardgame/player_web/player.o"
+	@echo "... cardgame/player_web/player.i"
+	@echo "... cardgame/player_web/player.s"
 .PHONY : help
 
 

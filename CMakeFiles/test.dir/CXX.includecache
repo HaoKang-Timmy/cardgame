@@ -6,25 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/timmy/Documents/cpp/cardgame/cardgame/game/card.cpp
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.cpp
 iostream
 -
-ctime
--
-algorithm
--
-card.h
-/home/timmy/Documents/cpp/cardgame/cardgame/game/card.h
-
-/home/timmy/Documents/cpp/cardgame/cardgame/game/deck.cpp
-
-/home/timmy/Documents/cpp/cardgame/cardgame/game/main.cpp
-iostream
--
-card.h
-/home/timmy/Documents/cpp/cardgame/cardgame/game/card.h
 player.h
-/home/timmy/Documents/cpp/cardgame/cardgame/game/player.h
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.h
+card.h
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/card.h
 
 include/card.h
 iostream

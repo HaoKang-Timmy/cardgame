@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/timmy/Documents/cpp/cardgame
+CMAKE_SOURCE_DIR = /mnt/e/learn/SECOND_DOWN/oop/cardgame
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/timmy/Documents/cpp/cardgame
+CMAKE_BINARY_DIR = /mnt/e/learn/SECOND_DOWN/oop/cardgame
 
 # Include any dependencies generated for this target.
 include CMakeFiles/test.dir/depend.make
@@ -59,48 +59,62 @@ include CMakeFiles/test.dir/flags.make
 
 CMakeFiles/test.dir/cardgame/game/card.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/cardgame/game/card.cpp.o: cardgame/game/card.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timmy/Documents/cpp/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/cardgame/game/card.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/card.cpp.o -c /home/timmy/Documents/cpp/cardgame/cardgame/game/card.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test.dir/cardgame/game/card.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/card.cpp.o -c /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/card.cpp
 
 CMakeFiles/test.dir/cardgame/game/card.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/cardgame/game/card.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/timmy/Documents/cpp/cardgame/cardgame/game/card.cpp > CMakeFiles/test.dir/cardgame/game/card.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/card.cpp > CMakeFiles/test.dir/cardgame/game/card.cpp.i
 
 CMakeFiles/test.dir/cardgame/game/card.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/cardgame/game/card.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/timmy/Documents/cpp/cardgame/cardgame/game/card.cpp -o CMakeFiles/test.dir/cardgame/game/card.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/card.cpp -o CMakeFiles/test.dir/cardgame/game/card.cpp.s
 
 CMakeFiles/test.dir/cardgame/game/deck.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/cardgame/game/deck.cpp.o: cardgame/game/deck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timmy/Documents/cpp/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test.dir/cardgame/game/deck.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/deck.cpp.o -c /home/timmy/Documents/cpp/cardgame/cardgame/game/deck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test.dir/cardgame/game/deck.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/deck.cpp.o -c /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/deck.cpp
 
 CMakeFiles/test.dir/cardgame/game/deck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/cardgame/game/deck.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/timmy/Documents/cpp/cardgame/cardgame/game/deck.cpp > CMakeFiles/test.dir/cardgame/game/deck.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/deck.cpp > CMakeFiles/test.dir/cardgame/game/deck.cpp.i
 
 CMakeFiles/test.dir/cardgame/game/deck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/cardgame/game/deck.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/timmy/Documents/cpp/cardgame/cardgame/game/deck.cpp -o CMakeFiles/test.dir/cardgame/game/deck.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/deck.cpp -o CMakeFiles/test.dir/cardgame/game/deck.cpp.s
 
 CMakeFiles/test.dir/cardgame/game/main.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/cardgame/game/main.cpp.o: cardgame/game/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timmy/Documents/cpp/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/cardgame/game/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/main.cpp.o -c /home/timmy/Documents/cpp/cardgame/cardgame/game/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/cardgame/game/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/game/main.cpp.o -c /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/main.cpp
 
 CMakeFiles/test.dir/cardgame/game/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/cardgame/game/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/timmy/Documents/cpp/cardgame/cardgame/game/main.cpp > CMakeFiles/test.dir/cardgame/game/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/main.cpp > CMakeFiles/test.dir/cardgame/game/main.cpp.i
 
 CMakeFiles/test.dir/cardgame/game/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/cardgame/game/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/timmy/Documents/cpp/cardgame/cardgame/game/main.cpp -o CMakeFiles/test.dir/cardgame/game/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/main.cpp -o CMakeFiles/test.dir/cardgame/game/main.cpp.s
+
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.o: cardgame/player_web/player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/cardgame/player_web/player.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test.dir/cardgame/player_web/player.cpp.o -c /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.cpp
+
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/cardgame/player_web/player.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.cpp > CMakeFiles/test.dir/cardgame/player_web/player.cpp.i
+
+CMakeFiles/test.dir/cardgame/player_web/player.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/cardgame/player_web/player.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.cpp -o CMakeFiles/test.dir/cardgame/player_web/player.cpp.s
 
 # Object files for target test
 test_OBJECTS = \
 "CMakeFiles/test.dir/cardgame/game/card.cpp.o" \
 "CMakeFiles/test.dir/cardgame/game/deck.cpp.o" \
-"CMakeFiles/test.dir/cardgame/game/main.cpp.o"
+"CMakeFiles/test.dir/cardgame/game/main.cpp.o" \
+"CMakeFiles/test.dir/cardgame/player_web/player.cpp.o"
 
 # External object files for target test
 test_EXTERNAL_OBJECTS =
@@ -108,9 +122,10 @@ test_EXTERNAL_OBJECTS =
 test: CMakeFiles/test.dir/cardgame/game/card.cpp.o
 test: CMakeFiles/test.dir/cardgame/game/deck.cpp.o
 test: CMakeFiles/test.dir/cardgame/game/main.cpp.o
+test: CMakeFiles/test.dir/cardgame/player_web/player.cpp.o
 test: CMakeFiles/test.dir/build.make
 test: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/timmy/Documents/cpp/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +138,6 @@ CMakeFiles/test.dir/clean:
 .PHONY : CMakeFiles/test.dir/clean
 
 CMakeFiles/test.dir/depend:
-	cd /home/timmy/Documents/cpp/cardgame && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/timmy/Documents/cpp/cardgame /home/timmy/Documents/cpp/cardgame /home/timmy/Documents/cpp/cardgame /home/timmy/Documents/cpp/cardgame /home/timmy/Documents/cpp/cardgame/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/e/learn/SECOND_DOWN/oop/cardgame && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/e/learn/SECOND_DOWN/oop/cardgame /mnt/e/learn/SECOND_DOWN/oop/cardgame /mnt/e/learn/SECOND_DOWN/oop/cardgame /mnt/e/learn/SECOND_DOWN/oop/cardgame /mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles/test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test.dir/depend
 

@@ -5,12 +5,12 @@ cmake_minimum_required(VERSION 3.0)
 PROJECT(cardgame)
 
 # 头文件路径
-INCLUDE_DIRECTORIES(include)
-#INCLUDE_DIRECTORIES(/usr/local/include/)
+INCLUDE_DIRECTORIES(./include)
+
 
 # 查找src下的所有cpp文件，然后将结果存进指定变量名(这里是DIR_SRCS)
 AUX_SOURCE_DIRECTORY(./cardgame/game DIR_SRCS)
-
+AUX_SOURCE_DIRECTORY(./cardgame/player_web DIR_SRCS)
 # 指定语言要求，以下命令为c++ 11
 SET(CMAKE_CXX_STANDARD 11)
 

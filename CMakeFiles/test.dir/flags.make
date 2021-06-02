@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/timmy/Documents/cpp/cardgame/include 
+CXX_INCLUDES = -I/mnt/e/learn/SECOND_DOWN/oop/cardgame/./include 
 
