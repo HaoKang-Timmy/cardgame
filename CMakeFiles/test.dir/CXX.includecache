@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.cpp
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/main.cpp
 iostream
 -
-player.h
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/player.h
 card.h
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/player_web/card.h
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/card.h
+player.h
+/mnt/e/learn/SECOND_DOWN/oop/cardgame/cardgame/game/player.h
 
 include/card.h
 iostream
