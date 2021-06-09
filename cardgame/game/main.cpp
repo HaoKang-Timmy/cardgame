@@ -1,6 +1,6 @@
 #include<iostream>
-#include "card.h"
-#include "player.h"
+#include "include/card.h"
+#include "include/player.h"
 using namespace std;
 int main()
 {

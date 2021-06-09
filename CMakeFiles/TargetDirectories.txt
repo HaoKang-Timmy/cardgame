@@ -1,3 +1,0 @@
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles/rebuild_cache.dir
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles/edit_cache.dir
-/mnt/e/learn/SECOND_DOWN/oop/cardgame/CMakeFiles/test.dir
