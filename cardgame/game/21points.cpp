@@ -2,7 +2,7 @@
 #include "include/card.h"
 #include "include/player.h"
 using namespace std;
-int main()
+int what()
 {
     int playern;
     char judge;
@@ -12,7 +12,7 @@ int main()
     const int playernum=playern;
     player array_player[playernum];
     cardHeap playing_heap;
-    playing_heap.initRandom();
+    playing_heap.initRandom(false);
     while(1)
     {
         for(int i=0;i<playernum;i++)
@@ -30,7 +30,7 @@ int main()
                         break;
                     if(playing_heap.isEmpty())
                     {
-                        playing_heap.initRandom();
+                        playing_heap.initRandom(false);
                     }
                 }
                 else if(judge=='n')
@@ -40,10 +40,6 @@ int main()
             }
             if(judge=='q')
                 goto outof;
-
-
-
-
         }
         int max_id=0;
         int flag=0;

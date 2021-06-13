@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>_21_points</class>
+ <widget class="QMainWindow" name="_21_points">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1420</width>
+    <height>940</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1420</width>
+    <height>940</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1420</width>
+    <height>940</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1420</width>
+      <height>940</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/backgrounds/graph/backgrounds/bg1.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

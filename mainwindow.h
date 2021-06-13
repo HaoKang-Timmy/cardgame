@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,6 +15,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void setButtons(QString picPath, QString content, QPushButton *button);
+private slots:
+
+
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -1,7 +1,8 @@
-#include<iostream>
+//#include<iostream>
 #include<ctime>
 #include<algorithm>
-#include "card.h"
+#include<QVector>
+#include "include/card.h"
 using namespace std;
 
 COLOR card::getColor() const
@@ -38,12 +39,15 @@ public:
 };
 
 //initialize a new heap (already constructed) with random order cards
-void cardHeap::initRandom()
+void cardHeap::initRandom(bool withJokers)
 {
     srand(time(0));
-    vector<cardWithOrder> newCards;//a temporary vector used to contain and sort the cards at first
-    for(int i = 0; i < 54; i++)
-    {//respectively construct 54 cards
+    QVector<cardWithOrder> newCards;//a temporary QVector used to contain and sort the cards at first
+    int j;
+    if(withJokers) j = 54;
+    else j = 52;
+    for(int i = 0; i < j; i++)
+    {//respectively construct j cards
         int newPoint;
         COLOR newColor;
         RANK newRank;
@@ -71,7 +75,7 @@ void cardHeap::initRandom()
             }
         }
         cardWithOrder thisCard(newPoint, newColor, newRank);
-        newCards.push_back(thisCard);//put the new card in the temporary vector
+        newCards.push_back(thisCard);//put the new card in the temporary QVector
     }
     sort(newCards.begin(), newCards.end());//sort according to the ramdom interger assigned
                                            //to obtain a random-ordered card heap
@@ -95,8 +99,8 @@ void cardHeap::insertCard(card& cardToInsert)
 //get the card at the ith position
 card& cardHeap::peekCard(int index)
 {
-    if(index >= cards.size()) cout<<"no such card"<<endl;//这句错误提示可以结合我们的其他代码实现修改
-                                                         //但按理来说可以避免遇到这种错误的情况
+//    if(index >= cards.size()) cout<<"no such card"<<endl;//这句错误提示可以结合我们的其他代码实现修改
+//                                                         //但按理来说可以避免遇到这种错误的情况
     return cards[index];
 }
 

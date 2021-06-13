@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/backgrounds">
+        <file>graph/backgrounds/bg1.png</file>
+    </qresource>
+    <qresource prefix="/buttons">
+        <file>graph/buttons/button0.png</file>
+        <file>graph/buttons/button1.png</file>
+    </qresource>
+</RCC>
