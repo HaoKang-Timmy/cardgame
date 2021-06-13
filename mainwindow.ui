@@ -63,6 +63,11 @@
       <height>940</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/backgrounds/graph/backgrounds/bg1.png);</string>
     </property>
@@ -97,10 +102,10 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>445</x>
-      <y>463</y>
-      <width>219</width>
-      <height>67</height>
+      <x>369</x>
+      <y>440</y>
+      <width>341</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="font">
@@ -123,10 +128,10 @@ background-color: rgba(0, 0, 0, 0);</string>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>463</y>
-      <width>219</width>
-      <height>67</height>
+      <x>710</x>
+      <y>440</y>
+      <width>351</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -137,11 +142,88 @@ background-color: rgba(191, 64, 64, 0);</string>
      <string>under construction...</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>750</y>
+      <width>1420</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>赌博是国家法律严令禁止的违法行为，请广大网民认清赌博“十赌十骗”、</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>790</y>
+      <width>1420</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>“十赌十输”的骗人本质和严重危害，自觉抵制赴境外或在网上参赌，不断提高防范意识和能力。</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>610</y>
+      <width>341</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft YaHei UI</family>
+      <pointsize>22</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/buttons/graph/buttons/button0.png);
+color: rgb(255, 255, 255);
+background-color: rgba(191, 64, 64, 0);</string>
+    </property>
+    <property name="text">
+     <string>退出游戏</string>
+    </property>
+   </widget>
    <zorder>label_2</zorder>
    <zorder>label</zorder>
    <zorder>label_3</zorder>
    <zorder>pushButton</zorder>
    <zorder>pushButton_2</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>pushButton_3</zorder>
   </widget>
  </widget>
  <resources/>

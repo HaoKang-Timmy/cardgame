@@ -10,26 +10,31 @@ CONFIG += c++11
 
 SOURCES += \
     _21_points.cpp \
-    cardgame/game/21points.cpp \
+    _21point_board.cpp \
     cardgame/game/card.cpp \
     cardgame/game/deck.cpp \
     cardgame/player_web/player.cpp \
     main.cpp \
     mainwindow.cpp \
-    selectnumplayer.cpp
+    selectnumplayer.cpp \
+    waitroom.cpp
 
 HEADERS += \
     _21_points.h \
+    _21point_board.h \
     include/card.h \
     include/game.h \
     include/player.h \
     mainwindow.h \
-    selectnumplayer.h
+    selectnumplayer.h \
+    waitroom.h
 
 FORMS += \
     _21_points.ui \
+    _21point_board.ui \
     mainwindow.ui \
-    selectnumplayer.ui
+    selectnumplayer.ui \
+    waitroom.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

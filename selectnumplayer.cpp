@@ -3,6 +3,7 @@
 #include "_21_points.h"
 #include "mainwindow.h"
 
+
 selectNumPlayer::selectNumPlayer(QWidget *parent, TYPEGAMES type) :
     QMainWindow(parent),
     ui(new Ui::selectNumPlayer)
@@ -14,10 +15,12 @@ selectNumPlayer::selectNumPlayer(QWidget *parent, TYPEGAMES type) :
         setWindowTitle("21点");
         break;
     }
+    setWindowFlags(this->windowFlags()& ~Qt::WindowCloseButtonHint);
     ui->lineEdit->setText("Player1");
     ui->lineEdit_2->setText("Player2");
     ui->lineEdit_3->setText("Player3");
     ui->lineEdit_5->setText("Player4");
+    ui->comboBox->setCurrentIndex(2);
 }
 
 selectNumPlayer::~selectNumPlayer()
@@ -74,8 +77,8 @@ void selectNumPlayer::on_comboBox_currentIndexChanged(int index)
     }
 }
 
-void selectNumPlayer::closeEvent(QCloseEvent *event)
+void selectNumPlayer::on_pushButton_2_clicked()
 {
-    MainWindow *w = new MainWindow;
-    w->show();
+    w1->setHidden(false);
 }
+

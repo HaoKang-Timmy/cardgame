@@ -1,4 +1,4 @@
-#include"include/player.h"
+﻿#include"include/player.h"
 #include"include/card.h"
 /**
  * @brief create a player
@@ -58,6 +58,16 @@ void player::set_score(int a)
 {
     this->score=a;
     return;
+}
+
+QString player::get_name() const
+{
+    return name;
+}
+
+int player::get_num_cards() const
+{
+    return playerHeap.getSize();
 }
 
 /**

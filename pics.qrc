@@ -6,4 +6,67 @@
         <file>graph/buttons/button0.png</file>
         <file>graph/buttons/button1.png</file>
     </qresource>
+    <qresource prefix="/cards">
+        <file>graph/cards/cardheap.png</file>
+    </qresource>
+    <qresource prefix="/cards/spade">
+        <file>graph/cards/Spade/S_2.png</file>
+        <file>graph/cards/Spade/S_3.png</file>
+        <file>graph/cards/Spade/S_4.png</file>
+        <file>graph/cards/Spade/S_5.png</file>
+        <file>graph/cards/Spade/S_6.png</file>
+        <file>graph/cards/Spade/S_7.png</file>
+        <file>graph/cards/Spade/S_8.png</file>
+        <file>graph/cards/Spade/S_9.png</file>
+        <file>graph/cards/Spade/S_10.png</file>
+        <file>graph/cards/Spade/S_A.png</file>
+        <file>graph/cards/Spade/S_J.png</file>
+        <file>graph/cards/Spade/S_K.png</file>
+        <file>graph/cards/Spade/S_Q.png</file>
+    </qresource>
+    <qresource prefix="/cards/Club">
+        <file>graph/cards/Club/C_2.png</file>
+        <file>graph/cards/Club/C_3.png</file>
+        <file>graph/cards/Club/C_4.png</file>
+        <file>graph/cards/Club/C_5.png</file>
+        <file>graph/cards/Club/C_6.png</file>
+        <file>graph/cards/Club/C_7.png</file>
+        <file>graph/cards/Club/C_8.png</file>
+        <file>graph/cards/Club/C_9.png</file>
+        <file>graph/cards/Club/C_10.png</file>
+        <file>graph/cards/Club/C_A.png</file>
+        <file>graph/cards/Club/C_J.png</file>
+        <file>graph/cards/Club/C_K.png</file>
+        <file>graph/cards/Club/C_Q.png</file>
+    </qresource>
+    <qresource prefix="/cards/Diamond">
+        <file>graph/cards/Diamond/D_2.png</file>
+        <file>graph/cards/Diamond/D_3.png</file>
+        <file>graph/cards/Diamond/D_4.png</file>
+        <file>graph/cards/Diamond/D_5.png</file>
+        <file>graph/cards/Diamond/D_6.png</file>
+        <file>graph/cards/Diamond/D_7.png</file>
+        <file>graph/cards/Diamond/D_8.png</file>
+        <file>graph/cards/Diamond/D_9.png</file>
+        <file>graph/cards/Diamond/D_10.png</file>
+        <file>graph/cards/Diamond/D_A.png</file>
+        <file>graph/cards/Diamond/D_J.png</file>
+        <file>graph/cards/Diamond/D_K.png</file>
+        <file>graph/cards/Diamond/D_Q.png</file>
+    </qresource>
+    <qresource prefix="/cards/Heart">
+        <file>graph/cards/Heart/H_2.png</file>
+        <file>graph/cards/Heart/H_3.png</file>
+        <file>graph/cards/Heart/H_4.png</file>
+        <file>graph/cards/Heart/H_5.png</file>
+        <file>graph/cards/Heart/H_6.png</file>
+        <file>graph/cards/Heart/H_7.png</file>
+        <file>graph/cards/Heart/H_8.png</file>
+        <file>graph/cards/Heart/H_9.png</file>
+        <file>graph/cards/Heart/H_10.png</file>
+        <file>graph/cards/Heart/H_A.png</file>
+        <file>graph/cards/Heart/H_J.png</file>
+        <file>graph/cards/Heart/H_K.png</file>
+        <file>graph/cards/Heart/H_Q.png</file>
+    </qresource>
 </RCC>

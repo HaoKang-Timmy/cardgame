@@ -2,7 +2,9 @@
 #define SELECTNUMPLAYER_H
 
 #include <QMainWindow>
+#include "mainwindow.h"
 enum TYPEGAMES {_21_POINTS};
+extern MainWindow *w1;
 
 namespace Ui {
 class selectNumPlayer;
@@ -21,12 +23,11 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::selectNumPlayer *ui;
     TYPEGAMES typeGame;
-
-protected:
-    void closeEvent(QCloseEvent *event);
 };
 
 #endif // SELECTNUMPLAYER_H

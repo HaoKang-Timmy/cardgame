@@ -1,7 +1,5 @@
-#ifndef CARD_H
+﻿#ifndef CARD_H
 #define CARD_H
-//#include <iostream>
-//#include <vector>
 #include<QVector>
 
 enum COLOR{SPADES, HEARTS, DIAMONDS, CLUBS, BIG_JOKER, SMALL_JOKER};
@@ -13,6 +11,7 @@ private:
     int point;//point get by the player if fetched
     COLOR color;//pattern of the card
     RANK rank;
+    QString picPath;
 public:
     card(){};
     card(int newPoint, COLOR newColor, RANK newRank): point(newPoint), color(newColor), rank(newRank) {};
@@ -20,6 +19,8 @@ public:
     int getPoint() const;
     COLOR getColor() const;
     RANK getRank() const;
+    void setPicPath();
+    QString& getPicPath();
 };
 
 
@@ -31,6 +32,7 @@ public:
     cardHeap() {};
     ~cardHeap() {};
     bool isEmpty();
+    int getSize() const;
     void initRandom(bool withJokers);
     card& fetchCard();
     void insertCard(card& cardToInsert);
@@ -38,4 +40,5 @@ public:
     void removeAllCards();
 };
 
+QString getCardPic(COLOR color, RANK rank);
 #endif

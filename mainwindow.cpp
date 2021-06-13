@@ -7,10 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QFont font;
-    font.setFamily("微软雅黑");
-    font.setBold(true);
-    font.setPointSize(36);
 }
 
 MainWindow::~MainWindow()
@@ -23,6 +19,11 @@ void MainWindow::on_pushButton_clicked()
 {
     selectNumPlayer *snp = new selectNumPlayer(nullptr, _21_POINTS);
     snp->show();
+    this->setHidden(true);
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
     this->close();
     this->~MainWindow();
 }
