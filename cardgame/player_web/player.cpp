@@ -1,13 +1,10 @@
-#include<iostream>
-#include"player.h"
-#include"card.h"
+﻿#include"include/player.h"
+#include"include/card.h"
 /**
  * @brief create a player
  * 
  */
 player::player():score(0),playerHeap(),win(0),round(0){};
-
-
 
 
 /**
@@ -62,6 +59,17 @@ void player::set_score(int a)
     this->score=a;
     return;
 }
+
+QString player::get_name() const
+{
+    return name;
+}
+
+int player::get_num_cards() const
+{
+    return playerHeap.getSize();
+}
+
 /**
  * @brief init a player, used when every round is over
  * 
@@ -73,4 +81,13 @@ void player::init_player()
     this->set_win(0);
     this->set_round(0);
     return;
+}
+
+/**
+ * @brief set the name for the player
+ *
+ */
+void player::set_name(QString player_name)
+{
+    name = player_name;
 }
