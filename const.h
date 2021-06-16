@@ -3,7 +3,7 @@
 
 enum MessageType{RoomStatus, NewParticipant, ParticipantLeft, StartgameServer, StartgameClient, ErrMessage};
 enum SeatStatus{Free, Seated, Robot};
-enum GameMessage{GameInit, FetchCardServer, FetchCardClient, EndRoundServer, EndRoundClient, EndGame};
+enum GameMessage{GameInit, FetchCardServer, FetchCardClient, EndRoundServer, EndRoundClient, EndGameServer, EndGameClient};
 enum ErrCode{SeatFull, PlayerNotFull};
 enum TYPEGAMES {_21_POINTS};
 

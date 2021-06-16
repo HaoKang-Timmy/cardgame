@@ -21,14 +21,16 @@ class _21_points : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit _21_points(int numPlayers, bool isclient, QWidget *parent = nullptr);
+    explicit _21_points(int numPlayers, bool isclient, int Seatid, QWidget *parent = nullptr);
     void setPlayers(const QString& p1, const QString& p2, const QString& p3 = "", const QString& p4 = "");
     void play();
     void init_interface();
     void setCurrentPlayer(int k);
     int getCurrentPlayer();
-    void FetchcardClient(int currentplayer, card fetchcard);
+    void FetchcardClient(card fetchcard);
     card FetchcardServer();
+    void EndroundClient();
+    void EndGame();
     ~_21_points();
 
 protected:
@@ -44,12 +46,12 @@ private:
     QUdpSocket* client;
     qint16 port;
     bool isclient;
+    int Seatid;
 
 private slots:
     void processPendingDatagrams();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
 };
 
 #endif // _21_POINTS_H

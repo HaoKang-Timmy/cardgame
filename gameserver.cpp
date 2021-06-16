@@ -7,7 +7,7 @@ gameserver::gameserver(TYPEGAMES typeGame, int playernum) : typeGame(typeGame)
     server->bind(port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint);
            //readyRead()信号是每当有新的数据来临时就被触发
     connect(server, SIGNAL(readyRead()), this, SLOT(processPendingDatagrams()));
-    game = new _21_points(playernum, 0);
+    game = new _21_points(playernum, 0, 0);
     sendMessage(GameInit);
 }
 
@@ -43,7 +43,7 @@ void gameserver::processPendingDatagrams()
         QDataStream in(&datagram, QIODevice::ReadOnly);//因为其属性为只读，所以是输入
         int messageType;    //此处的int为qint32，在Qt中，qint8为char，qint16为uint
         in >> messageType;    //读取1个32位长度的整型数据到messageTyep中
-
+        card got;
         QByteArray data;    //字节数组
         //QDataStream类是将序列化的二进制数据送到io设备，因为其属性为只写
         QDataStream out(&data, QIODevice::WriteOnly);
@@ -53,11 +53,22 @@ void gameserver::processPendingDatagrams()
             case GameInit:
                 break;
             case FetchCardServer:
-                card got = game->FetchcardServer();
+                got = game->FetchcardServer();
                 type = FetchCardClient;
-                out<<type<<game->getCurrentPlayer()<<got.getPoint()<<got.getColor()<<got.getRank();
-                qDebug()<<type<<game->getCurrentPlayer();
+                out<<type<<game->getCurrentPlayer()<<got.getPoint()<<got.getColor()<<got.getRank()<<got.getPicPath();
                 server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                break;
+            case EndRoundServer:
+                type = EndRoundClient;
+                out<<type;
+                server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                break;
+            case EndGameServer:
+                type = EndGameClient;
+                out<<type;
+                server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                this->~gameserver();
+                break;
         }
     }
 }

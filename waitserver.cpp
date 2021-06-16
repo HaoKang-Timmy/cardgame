@@ -9,8 +9,10 @@ waitserver::waitserver(int playernum, SeatStatus* player, QWidget *parent) :
     robotnum = 0;
     for(int i = 1; i <= 4; i++) {
         connected[i] = player[i];
-        if(connected[i] == Robot)
+        if(connected[i] == Robot) {
             robotnum++;
+            this->player[i] = "robot";
+        }
     }
     connect_num = 0;
     server = new QUdpSocket(this);
