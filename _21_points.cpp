@@ -1,19 +1,24 @@
 #include "_21_points.h"
 #include "ui__21_points.h"
 #include "_21point_board.h"
+#include "QDebug"
 
-_21_points::_21_points(QWidget *parent, int numPlayers) :
-    QMainWindow(parent),
+_21_points::_21_points(int numPlayers, bool isclient, QWidget *parent) :
+    QMainWindow(parent), playerNumber(numPlayers), isclient(isclient),
     ui(new Ui::_21_points)
 {
     ui->setupUi(this);
-    playerNumber = numPlayers;
-    init_interface();
+    client = new QUdpSocket(this);
+    port = 2333;
+    client->bind(port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint);
+           //readyRead()信号是每当有新的数据来临时就被触发
+    connect(client, SIGNAL(readyRead()), this, SLOT(processPendingDatagrams()));
+    /*init_interface();
     current_player = 0;
     array_player[0].set_round(1);
     ui->label_56->setHidden(true);
     ui->label_57->setHidden(true);
-    ui->label_58->setHidden(true);
+    ui->label_58->setHidden(true);*/
     setWindowTitle("21点");
 }
 
@@ -32,6 +37,11 @@ void _21_points::setPlayers(const QString &p1, const QString &p2, const QString 
     ui->label_51->setText(array_player[1].get_name());
     ui->label_53->setText(array_player[2].get_name());
     ui->label_49->setText(array_player[3].get_name());
+}
+
+int _21_points::getCurrentPlayer()
+{
+    return current_player;
 }
 
 void _21_points::setCurrentPlayer(int k)
@@ -107,6 +117,7 @@ void _21_points::init_interface()
     {
         for(int j = 0; j < 11; j++)
             player_card[i][j]->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
+        qDebug()<<"yes";
     }
 
     if(playerNumber == 3 || playerNumber == 2)
@@ -121,10 +132,9 @@ void _21_points::init_interface()
     }
 }
 
-
 void _21_points::on_pushButton_clicked()//抽牌
 {
-    qDebug()<<current_player;
+    /*qDebug()<<current_player;
     if(playing_heap.isEmpty())
         playing_heap.initRandom(false);
     card got = playing_heap.fetchCard();
@@ -137,6 +147,65 @@ void _21_points::on_pushButton_clicked()//抽牌
     else
     {
         QPixmap pix;
+        pix.load(got.getPicPath());
+        QTransform trans;
+        trans.rotate(90);
+        player_card[current_player][array_player[current_player].get_num_cards()-1]->setPixmap(pix.transformed(trans,Qt::SmoothTransformation));
+    }
+    QString display = "当前点数：" + QString::number(array_player[current_player].get_score());
+    int current_score = array_player[current_player].get_score();
+    if(current_score > 21)
+    {
+        display += "（出局）";
+    }
+    switch (current_player) {
+    case 0:
+        ui->label_48->setText(display);
+        if(current_score >= 21) ui->label_48->setStyleSheet("color: rgb(238, 29, 0);");
+        break;
+    case 1:
+        ui->label_52->setText(display);
+        if(current_score >= 21) ui->label_52->setStyleSheet("color: rgb(238, 29, 0);");
+        break;
+    case 2:
+        ui->label_54->setText(display);
+        if(current_score >= 21) ui->label_54->setStyleSheet("color: rgb(238, 29, 0);");
+        break;
+    case 3:
+        ui->label_50->setText(display);
+        if(current_score >= 21) ui->label_50->setStyleSheet("color: rgb(238, 29, 0);");
+    }
+    if(array_player[current_player].get_score() >= 21)
+    {
+        ui->pushButton_2->click();
+    }*/
+    sendMessage(FetchCardServer);
+}
+
+card _21_points::FetchcardServer()
+{
+    if(playing_heap.isEmpty())
+        playing_heap.initRandom(false);
+    card got = playing_heap.fetchCard();
+    return got;
+}
+
+void _21_points::FetchcardClient(int current_player, card got)//抽牌
+{
+    /*qDebug()<<current_player;
+    if(playing_heap.isEmpty())
+        playing_heap.initRandom(false);
+    card got = playing_heap.fetchCard();*/
+    array_player[current_player].player_fetchCard(got);
+    if(current_player == 0 || current_player == 2)
+    {
+        qDebug()<<array_player[current_player].get_num_cards();
+        player_card[current_player][array_player[current_player].get_num_cards()-1]->setStyleSheet("background-image: url(" + got.getPicPath() + ");");
+    }
+    else
+    {
+        QPixmap pix;
+        qDebug()<<got.getPicPath();
         pix.load(got.getPicPath());
         QTransform trans;
         trans.rotate(90);
@@ -221,3 +290,59 @@ void _21_points::on_pushButton_3_clicked()
     this->~_21_points();
 }
 
+void _21_points::sendMessage(GameMessage type)
+{
+    QByteArray data;    //字节数组
+    //QDataStream类是将序列化的二进制数据送到io设备，因为其属性为只写
+    QDataStream out(&data, QIODevice::WriteOnly);
+    //将type，getUserName()，localHostName按照先后顺序送到out数据流中，消息类型type在最前面
+    out << type;
+
+    switch(type)
+    {
+        case FetchCardClient:
+            break;
+    }
+    //一个udpSocket已经于一个端口bind在一起了，这里的data是out流中的data，最多可以传送8192个字节，但是建议不要超过
+    //512个字节，因为这样虽然可以传送成功，但是这些数据需要在ip层分组，QHostAddress::Broadcast是指发送数据的目的地址
+    //这里为本机所在地址的广播组内所有机器，即局域网广播发送
+    client->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);//将data中的数据发送
+}
+
+void _21_points::processPendingDatagrams()
+{
+    while(client->hasPendingDatagrams())
+    {
+        QByteArray datagram;
+        //pendingDatagramSize为返回第一个在等待读取报文的size，resize函数是把datagram的size归一化到参数size的大小一样
+        datagram.resize(client->pendingDatagramSize());
+        //将读取到的不大于datagram.size()大小数据输入到datagram.data()中，datagram.data()返回的是一个字节数组中存储
+        //数据位置的指针
+        client->readDatagram(datagram.data(), datagram.size());
+        QDataStream in(&datagram, QIODevice::ReadOnly);//因为其属性为只读，所以是输入
+        int messageType;    //此处的int为qint32，在Qt中，qint8为char，qint16为uint
+        in >> messageType;    //读取1个32位长度的整型数据到messageTyep中
+        switch(messageType)
+        {
+            case GameInit:
+                init_interface();
+                current_player = 0;
+                array_player[0].set_round(1);
+                ui->label_56->setHidden(true);
+                ui->label_57->setHidden(true);
+                ui->label_58->setHidden(true);
+                qDebug()<<"gameinit success";
+                break;
+            case FetchCardClient:
+                int current_player;
+                int point;//point get by the player if fetched
+                COLOR color;//pattern of the card
+                RANK rank;
+                QString picPath;
+                in>>current_player>>point>>color>>rank;
+                card C(point, color, rank);
+                FetchcardClient(current_player, C);
+                break;
+        }
+    }
+}

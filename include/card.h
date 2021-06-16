@@ -15,6 +15,8 @@ private:
 public:
     card(){};
     card(int newPoint, COLOR newColor, RANK newRank): point(newPoint), color(newColor), rank(newRank) {};
+    card(int newPoint, COLOR newColor, RANK newRank): point(newPoint), color(newColor), rank(newRank) {};
+    card(int newPoint, COLOR newColor, RANK newRank): point(newPoint), color(newColor), rank(newRank) {};
     ~card(){};
     int getPoint() const;
     COLOR getColor() const;
