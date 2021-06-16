@@ -4,8 +4,8 @@
 #include "_21_points.h"
 #include <QMessageBox>
 
-waitroom::waitroom(TYPEGAMES typeGame, bool isServer, waitserver *ws, QWidget *parent) :
-    QWidget(parent), typeGame(typeGame), isServer(isServer), ws(ws),
+waitroom::waitroom(TYPEGAMES typeGame, bool isServer, selectNumPlayer* s, waitserver *ws, QWidget *parent) :
+    QWidget(parent), typeGame(typeGame), isServer(isServer), ws(ws), s(s),
     ui(new Ui::waitroom)
 {
     ui->setupUi(this);
@@ -44,28 +44,28 @@ void waitroom::on_StartgameBtn_clicked()
 void waitroom::Startgame(int playernum, QString player[])
 {
     switch (playernum) {
-        case 0: //其实对应的是2，后面以此类推
+        case 2: //其实对应的是2，后面以此类推
             if(typeGame == _21_POINTS)
             {
-                _21_points *twentyone = new _21_points(2, 1);
+                _21_points *twentyone = new _21_points(2, 1, Seatid);
                 twentyone->setPlayers(player[1], player[2]);
                 this->close();
                 twentyone->show();
             }
             break;
-        case 1:
+        case 3:
             if(typeGame == _21_POINTS)
             {
-                _21_points *twentyone = new _21_points(3, 1);
+                _21_points *twentyone = new _21_points(3, 1, Seatid);
                 twentyone->setPlayers(player[1], player[2], player[3]);
                 this->close();
                 twentyone->show();
             }
             break;
-        case 2:
+        case 4:
             if(typeGame == _21_POINTS)
             {
-                _21_points *twentyone = new _21_points(4, 1);
+                _21_points *twentyone = new _21_points(4, 1, Seatid);
                 twentyone->setPlayers(player[1], player[2], player[3], player[4]);
                 this->close();
                 twentyone->show();
@@ -75,6 +75,7 @@ void waitroom::Startgame(int playernum, QString player[])
     if(isServer) {
         gs = new gameserver(typeGame, playernum);
     }
+    this->~waitroom();
 }
 
 void waitroom::processPendingDatagrams()

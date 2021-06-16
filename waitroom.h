@@ -12,12 +12,14 @@ namespace Ui {
 class waitroom;
 }
 
+class selectNumPlayer;
+
 class waitroom : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit waitroom(TYPEGAMES typeGame, bool isServer, waitserver* ws = nullptr, QWidget *parent = nullptr);
+    explicit waitroom(TYPEGAMES typeGame, bool isServer, selectNumPlayer* s, waitserver* ws = nullptr, QWidget *parent = nullptr);
     ~waitroom();
 
 protected:
@@ -32,6 +34,7 @@ private:
     waitserver* ws;
     TYPEGAMES typeGame;
     gameserver* gs;
+    selectNumPlayer* s;
     void Startgame(int playernum, QString player[]);
 
 private slots:

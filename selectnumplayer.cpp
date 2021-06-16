@@ -101,7 +101,7 @@ void selectNumPlayer::on_CreateBtn_clicked()
             Player[i] = Robot;
     int Playernum = ui->comboBox->currentIndex() + 2;
     ws = new waitserver(Playernum, Player);
-    wt = new waitroom(typeGame, 1, ws);
+    wt = new waitroom(typeGame, 1, this, ws);
     client = new QUdpSocket(this);
     connect(this,SIGNAL(sendData(QString)), wt,SLOT(getData(QString)));
     sendMessage(NewParticipant);
@@ -112,7 +112,7 @@ void selectNumPlayer::on_CreateBtn_clicked()
 
 void selectNumPlayer::on_EnterBtn_clicked()
 {
-    wt = new waitroom(typeGame, 0);
+    wt = new waitroom(typeGame, 0, this);
     client = new QUdpSocket(this);
     connect(this,SIGNAL(sendData(QString)), wt,SLOT(getData(QString)));
     sendMessage(NewParticipant);
