@@ -7,6 +7,9 @@
 #include "include/player.h"
 #include "mainwindow.h"
 #include <QLabel>
+#include <QUdpSocket>
+#include <const.h>
+
 extern MainWindow *w1;
 
 namespace Ui {
@@ -18,12 +21,18 @@ class _21_points : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit _21_points(QWidget *parent = nullptr, int numPlayers = 4);
+    explicit _21_points(int numPlayers, bool isclient, QWidget *parent = nullptr);
     void setPlayers(const QString& p1, const QString& p2, const QString& p3 = "", const QString& p4 = "");
     void play();
     void init_interface();
     void setCurrentPlayer(int k);
+    int getCurrentPlayer();
+    void FetchcardClient(int currentplayer, card fetchcard);
+    card FetchcardServer();
     ~_21_points();
+
+protected:
+    void sendMessage(GameMessage type);
 
 private:
     Ui::_21_points *ui;
@@ -32,8 +41,12 @@ private:
     cardHeap playing_heap;
     int current_player;//当前轮到的玩家，0~3
     QLabel *player_card[4][11];
+    QUdpSocket* client;
+    qint16 port;
+    bool isclient;
 
 private slots:
+    void processPendingDatagrams();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();

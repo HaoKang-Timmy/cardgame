@@ -1,22 +1,44 @@
 #ifndef WAITROOM_H
 #define WAITROOM_H
 
-#include <QMainWindow>
+#include <QWidget>
+#include <QDebug>
+#include <QUdpSocket>
+#include "const.h"
+#include "gameserver.h"
+#include "waitserver.h"
 
 namespace Ui {
-class WaitRoom;
+class waitroom;
 }
 
-class WaitRoom : public QMainWindow
+class waitroom : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit WaitRoom(QWidget *parent = nullptr);
-    ~WaitRoom();
+    explicit waitroom(TYPEGAMES typeGame, bool isServer, waitserver* ws = nullptr, QWidget *parent = nullptr);
+    ~waitroom();
+
+protected:
+    void sendMessage(MessageType type);
 
 private:
-    Ui::WaitRoom *ui;
+    int Seatid;
+    Ui::waitroom *ui;
+    QUdpSocket* client;
+    qint16 port;
+    bool isServer;
+    waitserver* ws;
+    TYPEGAMES typeGame;
+    gameserver* gs;
+    void Startgame(int playernum, QString player[]);
+
+private slots:
+    void getData(QString);//得到数据的槽函数
+    void processPendingDatagrams();
+    void on_StartgameBtn_clicked();
+    void on_QuitRoomBtn_clicked();
 };
 
 #endif // WAITROOM_H
