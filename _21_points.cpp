@@ -2,13 +2,23 @@
 #include "ui__21_points.h"
 #include "_21point_board.h"
 #include "QDebug"
+#include "mainwindow.h"
+extern MainWindow *w1;
 
 _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *parent) :
     QMainWindow(parent), playerNumber(numPlayers), isclient(isclient), Seatid(Seatid),
     ui(new Ui::_21_points)
 {
     ui->setupUi(this);
+
+    //以下这几行应该是加在gameinit里的，但是因为新的游戏逻辑还没有正式加入，所以先放这里
+    current_round = 1;//第一局
+    ui->label_64->setHidden(true);//隐藏一局结束时的按钮和提示
+    ui->pushButton_3->setHidden(true);
+    ui->pushButton_4->setHidden(true);
+
     client = new QUdpSocket(this);
+
     port = 2333;
     client->bind(port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint);
            //readyRead()信号是每当有新的数据来临时就被触发
@@ -28,6 +38,11 @@ _21_points::~_21_points()
     delete ui;
 }
 
+void _21_points::closeEvent(QCloseEvent *event)
+{
+    w1->setHidden(false);
+}
+
 void _21_points::setPlayers(const QString &p1, const QString &p2, const QString &p3, const QString &p4)
 {
     array_player[0].set_name(p1);
@@ -38,6 +53,20 @@ void _21_points::setPlayers(const QString &p1, const QString &p2, const QString 
     ui->label_51->setText(array_player[1].get_name());
     ui->label_53->setText(array_player[2].get_name());
     ui->label_49->setText(array_player[3].get_name());
+    switch (Seatid) {
+    case 1:
+        ui->label_47->setText(ui->label_47->text() + "（我）");
+        break;
+    case 2:
+        ui->label_51->setText(ui->label_51->text() + "（我）");
+        break;
+    case 3:
+        ui->label_53->setText(ui->label_53->text() + "（我）");
+        break;
+    case 4:
+        ui->label_49->setText(ui->label_49->text() + "（我）");
+    }
+
 }
 
 int _21_points::getCurrentPlayer()
@@ -124,11 +153,13 @@ void _21_points::init_interface()
     {
         ui->label_49->setHidden(true);
         ui->label_50->setHidden(true);
+        ui->label_62->setHidden(true);
     }
     if(playerNumber == 2)
     {
         ui->label_53->setHidden(true);
         ui->label_54->setHidden(true);
+        ui->label_61->setHidden(true);
     }
 }
 
@@ -268,7 +299,7 @@ void _21_points::EndroundClient()
         sendMessage(EndGameServer);
     else
         setCurrentPlayer(k);
-    if(k == Seatid)
+    if(k == Seatid - 1)
     {
         ui->pushButton->setHidden(false);
         ui->pushButton_2->setHidden(false);
@@ -320,8 +351,8 @@ void _21_points::EndGame()
             board->labels[4]->setText(array_player[max_id].get_name() + "获胜！");
         }
         board->show();
-        this->close();
     }
+    this->setHidden(true);
     this->~_21_points();
 }
 
@@ -366,6 +397,11 @@ void _21_points::processPendingDatagrams()
                 ui->label_56->setHidden(true);
                 ui->label_57->setHidden(true);
                 ui->label_58->setHidden(true);
+                if(Seatid != 1)
+                {
+                    ui->pushButton->setHidden(true);
+                    ui->pushButton_2->setHidden(true);
+                }
                 break;
             case FetchCardClient:
                 in>>current_player>>point>>color>>rank>>picPath;
@@ -380,9 +416,100 @@ void _21_points::processPendingDatagrams()
         }
     }
 }
-
-void _21_points::on_pushButton_3_clicked()
+void _21_points::end_Overall_round()//完整的一轮（每个玩家都轮过一次）结束
 {
+    //无论如何，结束时都隐藏抽牌的按钮
+    ui->pushButton->setHidden(true);
+    ui->pushButton_2->setHidden(true);
+    //先判断是否有玩家获胜，设置提示
+    int flag=0;
+    int max_score = -1;
+    int max_id;
+    for(int i=0;i<playerNumber;i++)
+    {
+        if(array_player[i].get_score()>= max_score && array_player[i].get_score()<=21)
+        {
+            flag=1;
+            max_id=i;
+            max_score = array_player[i].get_score();
+        }
+    }
+    if(flag)
+    {
+        array_player[max_id].add_new_win();
+        ui->label_63->setText("第" + QString::number(current_round) + "获胜玩家为" + array_player[max_id].get_name() + "!");
+    }
+    else ui->label_63->setText("第" + QString::number(current_round) + "局没有玩家获胜");
+//这里要有一段判断是不是server,如果是server则显示是否继续的按钮
+    if(true/* == isServer*/)
+    {
+        ui->pushButton_3->setHidden(false);
+        ui->pushButton_4->setHidden(false);
+    }
+    else
+    {//向其他玩家提示等待房间创建者选择是否继续
+        ui->label_64->setHidden(false);
+    }
+}
 
+void _21_points::new_Overall_round()//开始新的一轮
+{
+    current_round ++;
+    ui->label_63->setText("第" + QString::number(current_round) + "局");
+    for(int i = 0; i < playerNumber; i++)
+    {
+        array_player[i].clear_fetched_cards();//玩家原来抽的牌清空，不过总牌堆不用重置，继续抽即可
+        for(int j = 0; j < 11; j++)
+        {//重置玩家抽牌的显示
+            player_card[i][j]->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
+        }
+    }
+    //更新局数显示
+    ui->label_59->setText("已获胜局数：" + QString::number(array_player[0].get_num_wins()));
+    ui->label_60->setText("已获胜局数：" + QString::number(array_player[1].get_num_wins()));
+    ui->label_61->setText("已获胜局数：" + QString::number(array_player[2].get_num_wins()));
+    ui->label_62->setText("已获胜局数：" + QString::number(array_player[3].get_num_wins()));
+
+    //把一局结束之后选择是否继续的按钮和label藏起来，应该也要加到gameinit里
+    ui->pushButton_3->setHidden(true);
+    ui->pushButton_4->setHidden(true);
+    ui->label_64->setHidden(true);
+
+    //以下是gameinit里的部分逻辑
+    this->current_player = 0;
+    array_player[0].set_round(1);
+    ui->label_56->setHidden(true);
+    ui->label_57->setHidden(true);
+    ui->label_58->setHidden(true);
+    if(Seatid != 1)
+    {
+        ui->pushButton->setHidden(true);
+        ui->pushButton_2->setHidden(true);
+    }
+}
+
+
+void _21_points::on_pushButton_3_clicked()//点击继续游戏按钮
+{
+    new_Overall_round();//开始新一局
+}
+
+
+void _21_points::on_pushButton_4_clicked()//点击结束游戏按钮
+{
+    _21point_Board *board = new _21point_Board();
+    QString text;
+    int i;
+    for(i = 0; i < playerNumber; i++)
+    {
+        text = array_player[i].get_name() + "：获胜" + QString::number(array_player[i].get_num_wins()) + "局";
+        board->labels[i]->setText(text);
+    }
+    for(; i < 4; i++)
+        board->labels[i]->setText("");//只显示已有的玩家的获胜次数，其余的清空
+    board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
+    this->setHidden(true);
+    board->show();
+    this->~_21_points();
 }
 

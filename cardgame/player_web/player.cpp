@@ -4,7 +4,7 @@
  * @brief create a player
  * 
  */
-player::player():score(0),playerHeap(),win(0),round(0){};
+player::player():score(0),playerHeap(),win(0),round(0), num_win_round(0){};
 
 
 /**
@@ -90,4 +90,23 @@ void player::init_player()
 void player::set_name(QString player_name)
 {
     name = player_name;
+}
+
+/**
+ * @brief increment the number of wins of the player
+ *
+ */
+void player::add_new_win()
+{
+    num_win_round++;
+}
+
+void player::clear_fetched_cards()
+{
+    playerHeap.removeAllCards();
+}
+
+int player::get_num_wins() const
+{
+    return num_win_round;
 }

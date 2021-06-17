@@ -55,7 +55,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Player2: 15 points</string>
+    <string>Player2: 获胜2局</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -79,7 +79,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Player3: 17 points</string>
+    <string>Player3: 获胜3局</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -103,7 +103,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Player1: 10 points</string>
+    <string>Player1: 获胜1局</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -127,7 +127,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Player4: 16 points</string>
+    <string>Player4: 获胜4局</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
