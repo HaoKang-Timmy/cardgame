@@ -3,7 +3,9 @@
 #include "qhostinfo.h"
 #include "_21_points.h"
 #include <QMessageBox>
+#include "mainwindow.h"
 
+extern MainWindow *w1;
 waitroom::waitroom(TYPEGAMES typeGame, bool isServer, selectNumPlayer* s, waitserver *ws, QWidget *parent) :
     QWidget(parent), typeGame(typeGame), isServer(isServer), ws(ws), s(s),
     ui(new Ui::waitroom)
@@ -34,6 +36,8 @@ void waitroom::on_QuitRoomBtn_clicked()
 {
     sendMessage(ParticipantLeft);
     this->close();
+    this->~waitroom();
+    w1->setHidden(false);
 }
 
 void waitroom::on_StartgameBtn_clicked()
@@ -44,7 +48,7 @@ void waitroom::on_StartgameBtn_clicked()
 void waitroom::Startgame(int playernum, QString player[])
 {
     switch (playernum) {
-        case 2: //其实对应的是2，后面以此类推
+        case 2:
             if(typeGame == _21_POINTS)
             {
                 _21_points *twentyone = new _21_points(2, 1, Seatid);
@@ -75,7 +79,8 @@ void waitroom::Startgame(int playernum, QString player[])
     if(isServer) {
         gs = new gameserver(typeGame, playernum);
     }
-    this->~waitroom();
+
+//    this->~waitroom();
 }
 
 void waitroom::processPendingDatagrams()

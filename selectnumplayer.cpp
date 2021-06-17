@@ -3,7 +3,6 @@
 #include "_21_points.h"
 #include "mainwindow.h"
 #include "QDebug"
-#include "windows.h"
 #include "const.h"
 
 selectNumPlayer::selectNumPlayer(QWidget *parent, TYPEGAMES type) :
@@ -69,14 +68,28 @@ selectNumPlayer::~selectNumPlayer()
 void selectNumPlayer::on_comboBox_currentIndexChanged(int index)
 {
     switch (index) {
-    case 0:
+    case 0: // 2 players
         ui->Player3->setDisabled(true);
+        ui->Player4->setDisabled(true);
+        ui->Seatid->clear();
+        ui->Seatid->addItem("1");
+        ui->Seatid->addItem("2");
+        break;
     case 1:
         ui->Player4->setDisabled(true);
+        ui->Seatid->clear();
+        ui->Seatid->addItem("1");
+        ui->Seatid->addItem("2");
+        ui->Seatid->addItem("3");
         break;
     default:
         ui->Player3->setDisabled(false);
         ui->Player4->setDisabled(false);
+        ui->Seatid->clear();
+        ui->Seatid->addItem("1");
+        ui->Seatid->addItem("2");
+        ui->Seatid->addItem("3");
+        ui->Seatid->addItem("4");
     }
 }
 
@@ -106,8 +119,10 @@ void selectNumPlayer::on_CreateBtn_clicked()
     connect(this,SIGNAL(sendData(QString)), wt,SLOT(getData(QString)));
     sendMessage(NewParticipant);
     wt->show();
-    QString Seatid = ui->Seatid->text();
+    QString Seatid = QString::number(ui->Seatid->currentIndex() + 1);
     emit sendData(Seatid);//发送数据，使用emit
+    this->close();
+    this->~selectNumPlayer();
 }
 
 void selectNumPlayer::on_EnterBtn_clicked()
@@ -117,8 +132,10 @@ void selectNumPlayer::on_EnterBtn_clicked()
     connect(this,SIGNAL(sendData(QString)), wt,SLOT(getData(QString)));
     sendMessage(NewParticipant);
     wt->show();
-    QString Seatid = ui->Seatid->text();
+    QString Seatid = QString::number(ui->Seatid->currentIndex() + 1);
     emit sendData(Seatid);//发送数据，使用emit
+    this->close();
+    this->~selectNumPlayer();
 }
 
 void selectNumPlayer::sendMessage(MessageType type)
@@ -134,7 +151,7 @@ void selectNumPlayer::sendMessage(MessageType type)
     {
 
         case NewParticipant :
-            Seatid = ui->Seatid->text().toUInt();
+            Seatid = ui->Seatid->currentIndex() + 1;
             out << localHostName << ui->Username->text()<<Seatid;    //为什么此时只是输出地址这一项呢？因为此时不需要传递聊天内容
             break;
 

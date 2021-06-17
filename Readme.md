@@ -1,7 +1,8 @@
 # ReadMe
 
-已经能从图形界面玩了，但是没有加入联网。
+#### Qt如何打包
 
-牌的动画暂时还没做。waitroom做了个大概的。
+打包成.exe（我们需要的）：   [QT5的程序打包发布（将QT5的工程项目打包成一个exe程序）](https://blog.csdn.net/windsnow1/article/details/78004265)
 
-用Qt Creator打开.pro文件即可打开项目，在里面一键编译（只要环境配好了，比如MSVC）。
+打包成.deb（看一乐）：   [使用linuxdeployqt在linux下进行Qt打包发布(超详细)_百里杨的博客-CSDN博客](https://blog.csdn.net/zyhse/article/details/106381937)
+

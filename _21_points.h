@@ -31,6 +31,8 @@ public:
     card FetchcardServer();
     void EndroundClient();
     void EndGame();
+    void end_Overall_round();
+    void new_Overall_round();
     ~_21_points();
 
 protected:
@@ -38,6 +40,7 @@ protected:
 
 private:
     Ui::_21_points *ui;
+    int current_round;//当前轮数
     int playerNumber;//玩家实际人数
     player array_player[4];//玩家列表
     cardHeap playing_heap;
@@ -52,6 +55,13 @@ private slots:
     void processPendingDatagrams();
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // _21_POINTS_H

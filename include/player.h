@@ -10,6 +10,7 @@ private:
     cardHeap playerHeap;//store cards for players
     bool win;// a flag to show whether a palyer wins or not
     bool round;// if it is 1, it is this player has go through this turn
+    int num_win_round;//number of wins
 public:
     player();
     ~player(){};
@@ -22,5 +23,8 @@ public:
     void set_score(int a);
     void init_player();//used to set to next round
     int get_num_cards() const;
+    void add_new_win();
+    void clear_fetched_cards();
+    int get_num_wins() const;
 };
 #endif
