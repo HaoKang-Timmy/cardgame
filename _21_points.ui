@@ -1309,6 +1309,7 @@ background-color: rgba(0, 0, 0, 0);</string>
     </property>
    </widget>
    <zorder>label</zorder>
+   <zorder>label_63</zorder>
    <zorder>label_64</zorder>
    <zorder>pushButton_4</zorder>
    <zorder>pushButton_3</zorder>
@@ -1375,7 +1376,6 @@ background-color: rgba(0, 0, 0, 0);</string>
    <zorder>label_60</zorder>
    <zorder>label_61</zorder>
    <zorder>label_62</zorder>
-   <zorder>label_63</zorder>
   </widget>
  </widget>
  <resources/>

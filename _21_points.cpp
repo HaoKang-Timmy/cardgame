@@ -459,6 +459,7 @@ void _21_points::new_Overall_round()//开始新的一轮
     for(int i = 0; i < playerNumber; i++)
     {
         array_player[i].clear_fetched_cards();//玩家原来抽的牌清空，不过总牌堆不用重置，继续抽即可
+        array_player[i].set_score(0);//点数清空
         for(int j = 0; j < 11; j++)
         {//重置玩家抽牌的显示
             player_card[i][j]->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
@@ -469,6 +470,11 @@ void _21_points::new_Overall_round()//开始新的一轮
     ui->label_60->setText("已获胜局数：" + QString::number(array_player[1].get_num_wins()));
     ui->label_61->setText("已获胜局数：" + QString::number(array_player[2].get_num_wins()));
     ui->label_62->setText("已获胜局数：" + QString::number(array_player[3].get_num_wins()));
+
+    ui->label_48->setText("当前点数：0");
+    ui->label_52->setText("当前点数：0");
+    ui->label_54->setText("当前点数：0");
+    ui->label_50->setText("当前点数：0");
 
     //把一局结束之后选择是否继续的按钮和label藏起来，应该也要加到gameinit里
     ui->pushButton_3->setHidden(true);
