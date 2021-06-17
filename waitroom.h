@@ -7,6 +7,7 @@
 #include "const.h"
 #include "gameserver.h"
 #include "waitserver.h"
+#include "selectnumplayer.h"
 
 namespace Ui {
 class waitroom;

@@ -75,7 +75,8 @@ void waitroom::Startgame(int playernum, QString player[])
     if(isServer) {
         gs = new gameserver(typeGame, playernum);
     }
-    this->~waitroom();
+
+//    this->~waitroom();
 }
 
 void waitroom::processPendingDatagrams()

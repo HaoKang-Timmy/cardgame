@@ -199,7 +199,6 @@ void _21_points::FetchcardClient(card got)//抽牌
     array_player[current_player].player_fetchCard(got);
     if(current_player == 0 || current_player == 2)
     {
-        //qDebug()<<array_player[current_player].get_num_cards();
         player_card[current_player][array_player[current_player].get_num_cards()-1]->setStyleSheet("background-image: url(" + got.getPicPath() + ");");
     }
     else
@@ -269,6 +268,16 @@ void _21_points::EndroundClient()
         sendMessage(EndGameServer);
     else
         setCurrentPlayer(k);
+    if(k == Seatid)
+    {
+        ui->pushButton->setHidden(false);
+        ui->pushButton_2->setHidden(false);
+    }
+    else
+    {
+        ui->pushButton->setHidden(true);
+        ui->pushButton_2->setHidden(true);
+    }
     /*for(int i = 0; i < playerNumber; i++)
     {
         k++;
@@ -285,12 +294,15 @@ void _21_points::EndGame()
     if(isclient) {
         _21point_Board *board = new _21point_Board();
         QString text;
-        for(int i = 0; i < playerNumber; i++)
+        int i;
+        for(i = 0; i < playerNumber; i++)
         {
             text = array_player[i].get_name() + "点数：" + QString::number(array_player[i].get_score());
             if(array_player[i].get_score() > 21) text += "（出局）";
            board->labels[i]->setText(text);
         }
+        for(; i < 4; i++)
+            board->labels[i]->setText("");//只显示已有的玩家的分数，其余的清空
         int max_id=0;
         int flag=0;
         int max_score = -1;
@@ -368,3 +380,9 @@ void _21_points::processPendingDatagrams()
         }
     }
 }
+
+void _21_points::on_pushButton_3_clicked()
+{
+
+}
+

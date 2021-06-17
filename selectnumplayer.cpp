@@ -3,7 +3,6 @@
 #include "_21_points.h"
 #include "mainwindow.h"
 #include "QDebug"
-#include "windows.h"
 #include "const.h"
 
 selectNumPlayer::selectNumPlayer(QWidget *parent, TYPEGAMES type) :
@@ -108,6 +107,8 @@ void selectNumPlayer::on_CreateBtn_clicked()
     wt->show();
     QString Seatid = ui->Seatid->text();
     emit sendData(Seatid);//发送数据，使用emit
+    this->close();
+    this->~selectNumPlayer();
 }
 
 void selectNumPlayer::on_EnterBtn_clicked()
@@ -119,6 +120,8 @@ void selectNumPlayer::on_EnterBtn_clicked()
     wt->show();
     QString Seatid = ui->Seatid->text();
     emit sendData(Seatid);//发送数据，使用emit
+    this->close();
+    this->~selectNumPlayer();
 }
 
 void selectNumPlayer::sendMessage(MessageType type)
