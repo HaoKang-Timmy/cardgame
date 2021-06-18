@@ -129,7 +129,7 @@ background-color: rgba(191, 64, 64, 0);</string>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>430</y>
      <width>1420</width>
      <height>71</height>
@@ -175,19 +175,6 @@ background-color: rgba(191, 64, 64, 0);</string>
    </property>
    <property name="text">
     <string>等待玩家一加入</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ConnectNum">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>130</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="player2">
@@ -262,7 +249,6 @@ background-color: rgba(255, 255, 255, 0);</string>
   <zorder>QuitRoomBtn</zorder>
   <zorder>label_6</zorder>
   <zorder>player1</zorder>
-  <zorder>ConnectNum</zorder>
   <zorder>player2</zorder>
   <zorder>StartgameBtn</zorder>
   <zorder>player4</zorder>

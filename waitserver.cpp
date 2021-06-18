@@ -25,10 +25,13 @@ waitserver::waitserver(int playernum, SeatStatus* player, QWidget *parent) :
     m_timer = new QTimer(this);
     this->connect(m_timer,SIGNAL(timeout()),this,SLOT(slotTiming()));
     m_timer->start(500);
+    qDebug()<<"waitserver open";
 }
 
 waitserver::~waitserver()
 {
+    delete m_timer;
+    delete server;
 }
 
 
@@ -72,6 +75,9 @@ void waitserver::processPendingDatagrams()
         switch(messageType)
         {
             case NewParticipant:
+                qDebug()<<"get a participant";
+                for(int i = 1; i <= 4; i++)
+                    qDebug()<<connected[i]<<" "<<player[i];
                 in >> localHostName >> Username>>Seatid;
                 if(connected[Seatid] != Free) {
                     type = ErrMessage;
@@ -89,7 +95,6 @@ void waitserver::processPendingDatagrams()
 
             case ParticipantLeft:
                 in>>Seatid;
-                qDebug()<<Seatid;
                 connected[Seatid] = Free;
                 connect_num--;
                 break;
@@ -97,7 +102,6 @@ void waitserver::processPendingDatagrams()
             // 收到开始游戏请求，向所有玩家发送开始游戏指令
             case StartgameServer:
                 in>>localHostName;
-                qDebug()<<connect_num<<" "<<robotnum<<" "<<playernum;
                 // 人数满足要求
                 if(connect_num + robotnum == playernum) {
                     type = StartgameClient;

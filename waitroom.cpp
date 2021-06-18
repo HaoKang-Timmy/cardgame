@@ -22,7 +22,7 @@ waitroom::waitroom(TYPEGAMES typeGame, bool isServer, selectNumPlayer* s, waitse
 waitroom::~waitroom()
 {
     if(isServer)
-        delete ws;
+        ws->~waitserver();
     delete client;
     delete ui;
 }
@@ -45,7 +45,7 @@ void waitroom::on_StartgameBtn_clicked()
     sendMessage(StartgameServer);
 }
 
-void waitroom::Startgame(int playernum, QString player[])
+void waitroom::Startgame(int playernum, int robotnum, QString player[])
 {
     switch (playernum) {
         case 2:
@@ -77,10 +77,10 @@ void waitroom::Startgame(int playernum, QString player[])
             break;
         }
     if(isServer) {
-        gs = new gameserver(typeGame, playernum);
+        gs = new gameserver(typeGame, playernum, robotnum);
     }
 
-//    this->~waitroom();
+    this->~waitroom();
 }
 
 void waitroom::processPendingDatagrams()
@@ -126,11 +126,16 @@ void waitroom::processPendingDatagrams()
                 }
                 break;
             case StartgameClient:
-                int playernum;
+                int playernum, robotnum;
+                robotnum = 0;
                 in>>playernum;
-                for(int i = 1; i <= 4; i++)
+                for(int i = 1; i <= 4; i++) {
                     in>>connected[i]>>player[i];
-                Startgame(playernum, player);
+                    if(connected[i] == Robot) {
+                        robotnum++;
+                    }
+                }
+                Startgame(playernum, robotnum, player);
                 break;
             case ErrMessage:
                 ErrCode code;
@@ -138,6 +143,7 @@ void waitroom::processPendingDatagrams()
                 if(localHostName == remoteHostName)
                     if(code == SeatFull) {
                         QMessageBox::information(this,tr("Error"),QStringLiteral("座位已被占用"),QMessageBox::Ok);
+                        w1->setHidden(false);
                         this->close();
                     } else {
                         QMessageBox::information(this,tr("Error"),QStringLiteral("人数不够"),QMessageBox::Ok);
