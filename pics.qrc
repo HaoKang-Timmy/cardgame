@@ -69,4 +69,8 @@
         <file>graph/cards/Heart/H_K.png</file>
         <file>graph/cards/Heart/H_Q.png</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>graph/fonts/Chalkboard-SE-2.ttf</file>
+        <file>graph/fonts/msyhbd.ttc</file>
+    </qresource>
 </RCC>
