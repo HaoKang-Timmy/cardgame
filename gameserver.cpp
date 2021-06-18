@@ -1,6 +1,6 @@
 #include "gameserver.h"
 
-gameserver::gameserver(TYPEGAMES typeGame, int playernum) : typeGame(typeGame)
+gameserver::gameserver(TYPEGAMES typeGame, int playernum, int robotnum) : typeGame(typeGame), playernum(playernum), robotnum(robotnum)
 {
     server = new QUdpSocket(this);
     port = 2333;
@@ -58,14 +58,31 @@ void gameserver::processPendingDatagrams()
                 out<<type<<game->getCurrentPlayer()<<got.getPoint()<<got.getColor()<<got.getRank()<<got.getPicPath();
                 server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
                 break;
+            case EndFetchServer:
+                type = EndFetchClient;
+                out<<type;
+                server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                break;
             case EndRoundServer:
                 type = EndRoundClient;
                 out<<type;
                 server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                continue_num = 0;
+                break;
+            case NewRoundServer:
+                type = NewRoundClient;
+                continue_num++;
+                qDebug()<<"gameserver"<<" "<<continue_num<<" "<<robotnum<<" "<<playernum;
+                if(continue_num + robotnum == playernum) {
+                    out<<type;
+                    server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
+                }
                 break;
             case EndGameServer:
+                int Seatid;
+                in>>Seatid;
                 type = EndGameClient;
-                out<<type;
+                out<<type<<Seatid;
                 server->writeDatagram(data,data.length(),QHostAddress::Broadcast, port);
                 this->~gameserver();
                 break;

@@ -28,6 +28,7 @@ selectNumPlayer::selectNumPlayer(QWidget *parent, TYPEGAMES type) :
 selectNumPlayer::~selectNumPlayer()
 {
     delete ui;
+    delete client;
 }
 
 /*void selectNumPlayer::on_pushButton_clicked()
@@ -112,6 +113,9 @@ void selectNumPlayer::on_CreateBtn_clicked()
             Player[i] = Free;
         else
             Player[i] = Robot;
+    qDebug()<<"player status";
+    for(int i = 1; i <= 4; i++)
+        qDebug()<<Player[i];
     int Playernum = ui->comboBox->currentIndex() + 2;
     ws = new waitserver(Playernum, Player);
     wt = new waitroom(typeGame, 1, this, ws);
@@ -135,7 +139,7 @@ void selectNumPlayer::on_EnterBtn_clicked()
     QString Seatid = QString::number(ui->Seatid->currentIndex() + 1);
     emit sendData(Seatid);//发送数据，使用emit
     this->close();
-    this->~selectNumPlayer();
+    //this->~selectNumPlayer();
 }
 
 void selectNumPlayer::sendMessage(MessageType type)

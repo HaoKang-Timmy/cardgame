@@ -29,7 +29,7 @@ public:
     int getCurrentPlayer();
     void FetchcardClient(card fetchcard);
     card FetchcardServer();
-    void EndroundClient();
+    void EndfetchClient();
     void EndGame();
     void end_Overall_round();
     void new_Overall_round();

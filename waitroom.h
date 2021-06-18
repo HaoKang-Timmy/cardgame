@@ -35,7 +35,7 @@ private:
     TYPEGAMES typeGame;
     gameserver* gs;
     selectNumPlayer* s;
-    void Startgame(int playernum, QString player[]);
+    void Startgame(int playernum, int robotnum, QString player[]);
 
 private slots:
     void getData(QString);//得到数据的槽函数

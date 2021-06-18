@@ -3,6 +3,7 @@
 #include "_21point_board.h"
 #include "QDebug"
 #include "mainwindow.h"
+#include <QMessageBox>
 extern MainWindow *w1;
 
 _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *parent) :
@@ -10,7 +11,6 @@ _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *paren
     ui(new Ui::_21_points)
 {
     ui->setupUi(this);
-
     //以下这几行应该是加在gameinit里的，但是因为新的游戏逻辑还没有正式加入，所以先放这里
     current_round = 1;//第一局
     ui->label_64->setHidden(true);//隐藏一局结束时的按钮和提示
@@ -35,6 +35,7 @@ _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *paren
 
 _21_points::~_21_points()
 {
+    delete client;
     delete ui;
 }
 
@@ -288,18 +289,18 @@ void _21_points::on_pushButton_2_clicked()//不抽了
         ui->pushButton_3->click();
     }
     setCurrentPlayer(k);*/
-    sendMessage(EndRoundServer);
+    sendMessage(EndFetchServer);
 }
 
-void _21_points::EndroundClient()
+void _21_points::EndfetchClient()
 {
     int k = current_player + 1;
-    qDebug()<<"EndRound"<<k;
+    //qDebug()<<"EndRound"<<k;
     if(k == playerNumber && !isclient)
-        sendMessage(EndGameServer);
+        sendMessage(EndRoundServer);
     else
         setCurrentPlayer(k);
-    if(k == Seatid - 1)
+    /*if(k == Seatid - 1)
     {
         ui->pushButton->setHidden(false);
         ui->pushButton_2->setHidden(false);
@@ -308,7 +309,7 @@ void _21_points::EndroundClient()
     {
         ui->pushButton->setHidden(true);
         ui->pushButton_2->setHidden(true);
-    }
+    }*/
     /*for(int i = 0; i < playerNumber; i++)
     {
         k++;
@@ -322,37 +323,20 @@ void _21_points::EndroundClient()
 
 void _21_points::EndGame()
 {
-    if(isclient) {
-        _21point_Board *board = new _21point_Board();
-        QString text;
-        int i;
-        for(i = 0; i < playerNumber; i++)
-        {
-            text = array_player[i].get_name() + "点数：" + QString::number(array_player[i].get_score());
-            if(array_player[i].get_score() > 21) text += "（出局）";
-           board->labels[i]->setText(text);
-        }
-        for(; i < 4; i++)
-            board->labels[i]->setText("");//只显示已有的玩家的分数，其余的清空
-        int max_id=0;
-        int flag=0;
-        int max_score = -1;
-        for(int i=0;i<playerNumber;i++)
-        {
-            if(array_player[i].get_score()>= max_score && array_player[i].get_score()<=21)
-            {
-                flag=1;
-                max_id=i;
-                max_score = array_player[i].get_score();
-            }
-        }
-        if(flag)
-        {
-            board->labels[4]->setText(array_player[max_id].get_name() + "获胜！");
-        }
-        board->show();
+    _21point_Board *board = new _21point_Board();
+    QString text;
+    int i;
+    for(i = 0; i < playerNumber; i++)
+    {
+        text = array_player[i].get_name() + "：获胜" + QString::number(array_player[i].get_num_wins()) + "局";
+        board->labels[i]->setText(text);
     }
+    for(; i < 4; i++)
+        board->labels[i]->setText("");//只显示已有的玩家的获胜次数，其余的清空
+    board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
     this->setHidden(true);
+    if(isclient)
+        board->show();
     this->~_21_points();
 }
 
@@ -363,7 +347,9 @@ void _21_points::sendMessage(GameMessage type)
     QDataStream out(&data, QIODevice::WriteOnly);
     //将type，getUserName()，localHostName按照先后顺序送到out数据流中，消息类型type在最前面
     out << type;
-
+    if(type == EndGameServer) {
+        out<<Seatid;
+    }
     //一个udpSocket已经于一个端口bind在一起了，这里的data是out流中的data，最多可以传送8192个字节，但是建议不要超过
     //512个字节，因为这样虽然可以传送成功，但是这些数据需要在ip层分组，QHostAddress::Broadcast是指发送数据的目的地址
     //这里为本机所在地址的广播组内所有机器，即局域网广播发送
@@ -407,12 +393,24 @@ void _21_points::processPendingDatagrams()
                 in>>current_player>>point>>color>>rank>>picPath;
                 FetchcardClient(card(point, color, rank, picPath));
                 break;
+            case EndFetchClient:
+                EndfetchClient();
+                break;
             case EndRoundClient:
-                EndroundClient();
+                end_Overall_round();
+                break;
+            case NewRoundClient:
+                new_Overall_round();
                 break;
             case EndGameClient:
+                int seatid;
+                in>>seatid;
+                QString message;
+                if(isclient && Seatid != seatid) {
+                    message = QString::number(seatid) + "号玩家退出，游戏结束";
+                    QMessageBox::information(this,tr("Error"),message,QMessageBox::Ok);
+                }
                 EndGame();
-                break;
         }
     }
 }
@@ -487,23 +485,25 @@ void _21_points::new_Overall_round()//开始新的一轮
     ui->label_56->setHidden(true);
     ui->label_57->setHidden(true);
     ui->label_58->setHidden(true);
-    if(Seatid != 1)
+    qDebug()<<isclient<<" "<<Seatid;
+    if(Seatid == 1)
     {
-        ui->pushButton->setHidden(true);
-        ui->pushButton_2->setHidden(true);
+        ui->pushButton->setHidden(false);
+        ui->pushButton_2->setHidden(false);
     }
 }
 
 
 void _21_points::on_pushButton_3_clicked()//点击继续游戏按钮
 {
-    new_Overall_round();//开始新一局
+    //new_Overall_round();//开始新一局
+    sendMessage(NewRoundServer);
 }
 
 
 void _21_points::on_pushButton_4_clicked()//点击结束游戏按钮
 {
-    _21point_Board *board = new _21point_Board();
+    /*_21point_Board *board = new _21point_Board();
     QString text;
     int i;
     for(i = 0; i < playerNumber; i++)
@@ -515,7 +515,9 @@ void _21_points::on_pushButton_4_clicked()//点击结束游戏按钮
         board->labels[i]->setText("");//只显示已有的玩家的获胜次数，其余的清空
     board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
     this->setHidden(true);
-    board->show();
-    this->~_21_points();
+    if(isclient)
+        board->show();
+    this->~_21_points();*/
+    sendMessage(EndGameServer);
 }
 

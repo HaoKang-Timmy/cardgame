@@ -11,7 +11,7 @@ class gameserver : public QWidget
 {
     Q_OBJECT
 public:
-    gameserver(TYPEGAMES typeGame, int playernum);
+    gameserver(TYPEGAMES typeGame, int playernum, int robotnum);
 
 private:
     void sendMessage(GameMessage type);
@@ -21,6 +21,9 @@ private:
     qint16 port;
     _21_points *game;
     TYPEGAMES typeGame;
+    int continue_num;
+    int playernum;
+    int robotnum;
 
 private slots:
     void processPendingDatagrams();
