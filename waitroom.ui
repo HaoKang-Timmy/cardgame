@@ -243,6 +243,24 @@ background-color: rgba(255, 255, 255, 0);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="ConnectNum">
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>380</y>
+     <width>72</width>
+     <height>15</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft YaHei UI</family>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>label_2</zorder>
   <zorder>player3</zorder>
   <zorder>label</zorder>
@@ -252,6 +270,7 @@ background-color: rgba(255, 255, 255, 0);</string>
   <zorder>player2</zorder>
   <zorder>StartgameBtn</zorder>
   <zorder>player4</zorder>
+  <zorder>ConnectNum</zorder>
  </widget>
  <resources/>
  <connections/>
