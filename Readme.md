@@ -6,3 +6,6 @@
 
 打包成.deb（看一乐）：   [使用linuxdeployqt在linux下进行Qt打包发布(超详细)_百里杨的博客-CSDN博客](https://blog.csdn.net/zyhse/article/details/106381937)
 
+#### 如何加入键盘操作
+
+[QT开发（六）—— 鼠标，键盘事件_刘桂林的博客-CSDN博客_qt 键盘事件](https://blog.csdn.net/qq_26787115/article/details/79988277)
