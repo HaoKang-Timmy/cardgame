@@ -773,7 +773,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -797,7 +796,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -821,7 +819,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -845,7 +842,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -869,7 +865,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -893,7 +888,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -917,7 +911,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -941,7 +934,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -965,7 +957,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -991,7 +982,6 @@ background-color: rgba(0, 0, 0, 0);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1017,7 +1007,6 @@ background-color: rgba(0, 0, 0, 0);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1042,7 +1031,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1067,7 +1055,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1092,7 +1079,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1117,7 +1103,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1141,7 +1126,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1165,7 +1149,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1189,7 +1172,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1213,7 +1195,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei</family>
       <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1240,7 +1221,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1266,7 +1246,6 @@ background-color: rgba(0, 0, 0, 0);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>18</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -1285,15 +1264,14 @@ background-color: rgba(0, 0, 0, 0);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>570</y>
+      <y>650</y>
       <width>1420</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
-      <pointsize>20</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -1302,7 +1280,7 @@ background-color: rgba(0, 0, 0, 0);</string>
      <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>请等待房间创建者选择是否继续</string>
+     <string>        仅当所有玩家都选择继续时，游戏才会继续。</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -1310,7 +1288,6 @@ background-color: rgba(0, 0, 0, 0);</string>
    </widget>
    <zorder>label</zorder>
    <zorder>label_63</zorder>
-   <zorder>label_64</zorder>
    <zorder>pushButton_4</zorder>
    <zorder>pushButton_3</zorder>
    <zorder>label_2</zorder>
@@ -1376,6 +1353,7 @@ background-color: rgba(0, 0, 0, 0);</string>
    <zorder>label_60</zorder>
    <zorder>label_61</zorder>
    <zorder>label_62</zorder>
+   <zorder>label_64</zorder>
   </widget>
  </widget>
  <resources/>

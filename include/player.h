@@ -14,7 +14,7 @@ private:
 public:
     player();
     ~player(){};
-    int get_score();//used to show this player's score in a turn
+    int get_score() const;//used to show this player's score in a turn
     void player_fetchCard(card card_fetched);//get card from card Heap in a game
     QString get_name() const;
     void set_name(QString player_name);

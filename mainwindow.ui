@@ -32,15 +32,14 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>445</x>
+      <x>0</x>
       <y>30</y>
-      <width>531</width>
+      <width>1420</width>
       <height>191</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Chalkboard SE</family>
       <pointsize>80</pointsize>
       <weight>75</weight>
       <italic>false</italic>
@@ -52,6 +51,9 @@
     </property>
     <property name="text">
      <string>Card Game</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -86,7 +88,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -110,7 +111,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -201,7 +201,6 @@ background-color: rgba(191, 64, 64, 0);</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>

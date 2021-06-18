@@ -12,7 +12,7 @@ player::player():score(0),playerHeap(),win(0),round(0), num_win_round(0){};
  * 
  * @return score
  */
-int player::get_score()
+int player::get_score() const
 {
     return this->score;
 }

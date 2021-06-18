@@ -36,7 +36,6 @@
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -60,7 +59,6 @@
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -84,7 +82,6 @@
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>40</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -111,7 +108,6 @@
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>18</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -137,7 +133,6 @@ background-color: rgba(191, 64, 64, 0);</string>
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -147,7 +142,7 @@ background-color: rgba(191, 64, 64, 0);</string>
     <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>当前连接人数：</string>
+    <string>当前连接人数：          </string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -164,7 +159,6 @@ background-color: rgba(191, 64, 64, 0);</string>
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -188,7 +182,6 @@ background-color: rgba(191, 64, 64, 0);</string>
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -212,7 +205,6 @@ background-color: rgba(191, 64, 64, 0);</string>
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
      <pointsize>18</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -246,16 +238,19 @@ background-color: rgba(255, 255, 255, 0);</string>
   <widget class="QLabel" name="ConnectNum">
    <property name="geometry">
     <rect>
-     <x>910</x>
-     <y>380</y>
+     <x>770</x>
+     <y>430</y>
      <width>72</width>
-     <height>15</height>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Microsoft YaHei UI</family>
+     <pointsize>20</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
     <string/>

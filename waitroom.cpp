@@ -11,7 +11,8 @@ waitroom::waitroom(TYPEGAMES typeGame, bool isServer, selectNumPlayer* s, waitse
     ui(new Ui::waitroom)
 {
     ui->setupUi(this);
-    this->setAttribute(Qt::WA_DeleteOnClose,  true);
+    setWindowTitle("游戏准备中...");
+    this->setAttribute(Qt::WA_DeleteOnClose, true);
     client = new QUdpSocket(this);
     port = 2333;
     client->bind(port, QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint);

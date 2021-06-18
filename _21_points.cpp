@@ -13,7 +13,8 @@ _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *paren
     ui->setupUi(this);
     //以下这几行应该是加在gameinit里的，但是因为新的游戏逻辑还没有正式加入，所以先放这里
     current_round = 1;//第一局
-    ui->label_64->setHidden(true);//隐藏一局结束时的按钮和提示
+
+    //隐藏一局结束时的按钮和提示
     ui->pushButton_3->setHidden(true);
     ui->pushButton_4->setHidden(true);
 
@@ -92,9 +93,11 @@ void _21_points::setCurrentPlayer(int k)
         ui->label_56->setHidden(false);
         break;
     case 2:
+        if(playerNumber >= 3)
         ui->label_57->setHidden(false);
         break;
     case 3:
+        if(playerNumber == 4)
         ui->label_58->setHidden(false);
     }
 }
@@ -162,6 +165,7 @@ void _21_points::init_interface()
         ui->label_54->setHidden(true);
         ui->label_61->setHidden(true);
     }
+    ui->label_64->setHidden(true);
 }
 
 void _21_points::on_pushButton_clicked()//抽牌
@@ -244,7 +248,7 @@ void _21_points::FetchcardClient(card got)//抽牌
     }
     QString display = "当前点数：" + QString::number(array_player[current_player].get_score());
     int current_score = array_player[current_player].get_score();
-    if(current_score > 21)
+    if(current_score >= 21)
     {
         display += "（出局）";
     }
@@ -323,7 +327,7 @@ void _21_points::EndfetchClient()
 
 void _21_points::EndGame()
 {
-    _21point_Board *board = new _21point_Board();
+    _21point_Board *board = new _21point_Board(this);
     QString text;
     int i;
     for(i = 0; i < playerNumber; i++)
@@ -332,12 +336,17 @@ void _21_points::EndGame()
         board->labels[i]->setText(text);
     }
     for(; i < 4; i++)
+    {
+        qDebug()<<"i"<<i;
         board->labels[i]->setText("");//只显示已有的玩家的获胜次数，其余的清空
+    }
     board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
+    qDebug()<<"4";
     this->setHidden(true);
     if(isclient)
         board->show();
-    this->~_21_points();
+    qDebug()<<"board show";
+//    this->~_21_points();
 }
 
 void _21_points::sendMessage(GameMessage type)
@@ -403,14 +412,18 @@ void _21_points::processPendingDatagrams()
                 new_Overall_round();
                 break;
             case EndGameClient:
+                qDebug()<<"111";
                 int seatid;
                 in>>seatid;
+                qDebug()<<"seatid:" + QString::number(seatid);
                 QString message;
                 if(isclient && Seatid != seatid) {
                     message = QString::number(seatid) + "号玩家退出，游戏结束";
                     QMessageBox::information(this,tr("Error"),message,QMessageBox::Ok);
                 }
+                qDebug()<<"222";
                 EndGame();
+                qDebug()<<"333";
         }
     }
 }
@@ -420,22 +433,27 @@ void _21_points::end_Overall_round()//完整的一轮（每个玩家都轮过一
     ui->pushButton->setHidden(true);
     ui->pushButton_2->setHidden(true);
     //先判断是否有玩家获胜，设置提示
-    int flag=0;
+    bool win_flag = false;
+    bool equal_flag = true;
     int max_score = -1;
-    int max_id;
-    for(int i=0;i<playerNumber;i++)
+    int max_id = 0;
+    for(int i = 0; i < playerNumber; i++)
     {
-        if(array_player[i].get_score()>= max_score && array_player[i].get_score()<=21)
+        if(array_player[i].get_score() >= 21) equal_flag = false;
+        if(array_player[i].get_score() > max_score && array_player[i].get_score() < 21)
         {
-            flag=1;
+            win_flag = true;
+            if(i != 0) equal_flag = false;
             max_id=i;
             max_score = array_player[i].get_score();
         }
+        else if(array_player[i].get_score() < max_score) equal_flag = false;
     }
-    if(flag)
+    if(equal_flag) ui->label_63->setText("第" + QString::number(current_round) + "局为平局");
+    else if(win_flag)
     {
         array_player[max_id].add_new_win();
-        ui->label_63->setText("第" + QString::number(current_round) + "获胜玩家为" + array_player[max_id].get_name() + "!");
+        ui->label_63->setText("第" + QString::number(current_round) + "局获胜玩家为" + array_player[max_id].get_name() + "!");
     }
     else ui->label_63->setText("第" + QString::number(current_round) + "局没有玩家获胜");
 //这里要有一段判断是不是server,如果是server则显示是否继续的按钮
@@ -443,9 +461,6 @@ void _21_points::end_Overall_round()//完整的一轮（每个玩家都轮过一
     {
         ui->pushButton_3->setHidden(false);
         ui->pushButton_4->setHidden(false);
-    }
-    else
-    {//向其他玩家提示等待房间创建者选择是否继续
         ui->label_64->setHidden(false);
     }
 }
@@ -461,6 +476,11 @@ void _21_points::new_Overall_round()//开始新的一轮
         for(int j = 0; j < 11; j++)
         {//重置玩家抽牌的显示
             player_card[i][j]->setStyleSheet("background-color: rgba(0, 0, 0, 0);");
+            if(i == 1 || i == 3)//之前忘了左右两边的牌是用pixmap画的了，大意了
+            {
+                QPixmap empty = QPixmap();
+                player_card[i][j]->setPixmap(empty);
+            }
         }
     }
     //更新局数显示
@@ -470,9 +490,13 @@ void _21_points::new_Overall_round()//开始新的一轮
     ui->label_62->setText("已获胜局数：" + QString::number(array_player[3].get_num_wins()));
 
     ui->label_48->setText("当前点数：0");
+    ui->label_48->setStyleSheet("color: rgb(255, 255, 255);");//字体颜色恢复成白色
     ui->label_52->setText("当前点数：0");
+    ui->label_52->setStyleSheet("color: rgb(255, 255, 255);");
     ui->label_54->setText("当前点数：0");
+    ui->label_54->setStyleSheet("color: rgb(255, 255, 255);");
     ui->label_50->setText("当前点数：0");
+    ui->label_50->setStyleSheet("color: rgb(255, 255, 255);");
 
     //把一局结束之后选择是否继续的按钮和label藏起来，应该也要加到gameinit里
     ui->pushButton_3->setHidden(true);
@@ -491,6 +515,7 @@ void _21_points::new_Overall_round()//开始新的一轮
         ui->pushButton->setHidden(false);
         ui->pushButton_2->setHidden(false);
     }
+    setCurrentPlayer(0);
 }
 
 
