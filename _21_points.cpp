@@ -304,7 +304,7 @@ void _21_points::EndfetchClient()
         sendMessage(EndRoundServer);
     else
         setCurrentPlayer(k);
-    /*if(k == Seatid - 1)
+    if(k == Seatid - 1)
     {
         ui->pushButton->setHidden(false);
         ui->pushButton_2->setHidden(false);
@@ -313,7 +313,7 @@ void _21_points::EndfetchClient()
     {
         ui->pushButton->setHidden(true);
         ui->pushButton_2->setHidden(true);
-    }*/
+    }
     /*for(int i = 0; i < playerNumber; i++)
     {
         k++;
@@ -523,6 +523,7 @@ void _21_points::on_pushButton_3_clicked()//点击继续游戏按钮
 {
     //new_Overall_round();//开始新一局
     sendMessage(NewRoundServer);
+    ui->label_64->setText("等待其他玩家选择...");
 }
 
 
