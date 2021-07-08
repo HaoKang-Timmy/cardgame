@@ -46,7 +46,7 @@ void waitroom::on_StartgameBtn_clicked()
     sendMessage(StartgameServer);
 }
 
-void waitroom::Startgame(int playernum, int robotnum, QString player[])
+void waitroom::Startgame(int playernum, int robotnum, QString player[], SeatStatus connected[])
 {
     switch (playernum) {
         case 2:
@@ -78,6 +78,10 @@ void waitroom::Startgame(int playernum, int robotnum, QString player[])
             break;
         }
     if(isServer) {
+        for(int i = 1; i <= playernum; i++) {
+            if(connected[i] == Robot)
+                _21_points *r = new _21_points(playernum, 0, i);
+        }
         gs = new gameserver(typeGame, playernum, robotnum);
     }
 
@@ -136,7 +140,7 @@ void waitroom::processPendingDatagrams()
                         robotnum++;
                     }
                 }
-                Startgame(playernum, robotnum, player);
+                Startgame(playernum, robotnum, player, connected);
                 break;
             case ErrMessage:
                 ErrCode code;

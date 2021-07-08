@@ -3,6 +3,7 @@
 #include "_21point_board.h"
 #include "QDebug"
 #include "mainwindow.h"
+#include <windows.h>
 #include <QMessageBox>
 extern MainWindow *w1;
 
@@ -25,12 +26,6 @@ _21_points::_21_points(int numPlayers, bool isclient, int Seatid, QWidget *paren
            //readyRead()信号是每当有新的数据来临时就被触发
     connect(client, SIGNAL(readyRead()), this, SLOT(processPendingDatagrams()));
     qDebug()<<"game"<<Seatid;
-    /*init_interface();
-    current_player = 0;
-    array_player[0].set_round(1);
-    ui->label_56->setHidden(true);
-    ui->label_57->setHidden(true);
-    ui->label_58->setHidden(true);*/
     setWindowTitle("21点");
 }
 
@@ -170,51 +165,7 @@ void _21_points::init_interface()
 
 void _21_points::on_pushButton_clicked()//抽牌
 {
-    /*qDebug()<<current_player;
-    if(playing_heap.isEmpty())
-        playing_heap.initRandom(false);
-    card got = playing_heap.fetchCard();
-    array_player[current_player].player_fetchCard(got);
-    if(current_player == 0 || current_player == 2)
-    {
-        qDebug()<<array_player[current_player].get_num_cards();
-        player_card[current_player][array_player[current_player].get_num_cards()-1]->setStyleSheet("background-image: url(" + got.getPicPath() + ");");
-    }
-    else
-    {
-        QPixmap pix;
-        pix.load(got.getPicPath());
-        QTransform trans;
-        trans.rotate(90);
-        player_card[current_player][array_player[current_player].get_num_cards()-1]->setPixmap(pix.transformed(trans,Qt::SmoothTransformation));
-    }
-    QString display = "当前点数：" + QString::number(array_player[current_player].get_score());
-    int current_score = array_player[current_player].get_score();
-    if(current_score > 21)
-    {
-        display += "（出局）";
-    }
-    switch (current_player) {
-    case 0:
-        ui->label_48->setText(display);
-        if(current_score >= 21) ui->label_48->setStyleSheet("color: rgb(238, 29, 0);");
-        break;
-    case 1:
-        ui->label_52->setText(display);
-        if(current_score >= 21) ui->label_52->setStyleSheet("color: rgb(238, 29, 0);");
-        break;
-    case 2:
-        ui->label_54->setText(display);
-        if(current_score >= 21) ui->label_54->setStyleSheet("color: rgb(238, 29, 0);");
-        break;
-    case 3:
-        ui->label_50->setText(display);
-        if(current_score >= 21) ui->label_50->setStyleSheet("color: rgb(238, 29, 0);");
-    }
-    if(array_player[current_player].get_score() >= 21)
-    {
-        ui->pushButton_2->click();
-    }*/
+    qDebug()<<"click fetch";
     sendMessage(FetchCardServer);
 }
 
@@ -228,10 +179,6 @@ card _21_points::FetchcardServer()
 
 void _21_points::FetchcardClient(card got)//抽牌
 {
-    /*qDebug()<<current_player;
-    if(playing_heap.isEmpty())
-        playing_heap.initRandom(false);
-    card got = playing_heap.fetchCard();*/
     array_player[current_player].player_fetchCard(got);
     if(current_player == 0 || current_player == 2)
     {
@@ -239,8 +186,8 @@ void _21_points::FetchcardClient(card got)//抽牌
     }
     else
     {
+        qDebug()<<Seatid<<" set";
         QPixmap pix;
-        //qDebug()<<got.getPicPath();
         pix.load(got.getPicPath());
         QTransform trans;
         trans.rotate(90);
@@ -272,27 +219,23 @@ void _21_points::FetchcardClient(card got)//抽牌
     if(array_player[current_player].get_score() >= 21)
     {
         qDebug()<<"score >";
-        if(!isclient)
+        if(Seatid == 0)
             ui->pushButton_2->click();
+    }
+    if(current_player == Seatid - 1 && !isclient) {
+        Sleep(500);
+        qDebug()<<"Fetch:"<<Seatid;
+        if(array_player[current_player].self_judge()) {
+            sendMessage(FetchCardServer);
+        } else {
+            sendMessage(EndFetchServer);
+        }
     }
 }
 
 
 void _21_points::on_pushButton_2_clicked()//不抽了
 {
-    /*int k = current_player;
-    for(int i = 0; i < playerNumber; i++)
-    {
-        k++;
-        k %= playerNumber;
-        if(array_player[k].get_score() <= 21)
-            break;
-    }
-    if(current_player == k)
-    {//结算
-        ui->pushButton_3->click();
-    }
-    setCurrentPlayer(k);*/
     sendMessage(EndFetchServer);
 }
 
@@ -300,7 +243,7 @@ void _21_points::EndfetchClient()
 {
     int k = current_player + 1;
     //qDebug()<<"EndRound"<<k;
-    if(k == playerNumber && !isclient)
+    if(k == playerNumber && Seatid == 0)
         sendMessage(EndRoundServer);
     else
         setCurrentPlayer(k);
@@ -314,15 +257,15 @@ void _21_points::EndfetchClient()
         ui->pushButton->setHidden(true);
         ui->pushButton_2->setHidden(true);
     }
-    /*for(int i = 0; i < playerNumber; i++)
-    {
-        k++;
-        if(k == playerNumber)
-            sendMessage(EndGameServer);
-        if(array_player[k].get_score() <= 21)
-            break;
-    }*/
-    //setCurrentPlayer(k);
+    if(k == Seatid - 1 && !isclient) {
+        Sleep(500);
+         qDebug()<<"Fetch";
+        if(array_player[k].self_judge()) {
+            sendMessage(FetchCardServer);
+        } else {
+            sendMessage(EndFetchServer);
+        }
+    }
 }
 
 void _21_points::EndGame()
@@ -343,6 +286,7 @@ void _21_points::EndGame()
     board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
     qDebug()<<"4";
     this->setHidden(true);
+
     if(isclient)
         board->show();
     qDebug()<<"board show";
@@ -396,6 +340,15 @@ void _21_points::processPendingDatagrams()
                 {
                     ui->pushButton->setHidden(true);
                     ui->pushButton_2->setHidden(true);
+                }
+                if(this->current_player == Seatid - 1 && !isclient) {
+                    Sleep(500);
+                    qDebug()<<"Fetch:"<<Seatid;
+                    if(array_player[current_player].self_judge()) {
+                        sendMessage(FetchCardServer);
+                    } else {
+                        sendMessage(EndFetchServer);
+                    }
                 }
                 break;
             case FetchCardClient:
@@ -516,6 +469,15 @@ void _21_points::new_Overall_round()//开始新的一轮
         ui->pushButton_2->setHidden(false);
     }
     setCurrentPlayer(0);
+    if(current_player == Seatid - 1 && !isclient) {
+        Sleep(500);
+        qDebug()<<"Fetch:"<<Seatid;
+        if(array_player[current_player].self_judge()) {
+            sendMessage(FetchCardServer);
+        } else {
+            sendMessage(EndFetchServer);
+        }
+    }
 }
 
 
@@ -529,21 +491,6 @@ void _21_points::on_pushButton_3_clicked()//点击继续游戏按钮
 
 void _21_points::on_pushButton_4_clicked()//点击结束游戏按钮
 {
-    /*_21point_Board *board = new _21point_Board();
-    QString text;
-    int i;
-    for(i = 0; i < playerNumber; i++)
-    {
-        text = array_player[i].get_name() + "：获胜" + QString::number(array_player[i].get_num_wins()) + "局";
-        board->labels[i]->setText(text);
-    }
-    for(; i < 4; i++)
-        board->labels[i]->setText("");//只显示已有的玩家的获胜次数，其余的清空
-    board->labels[4]->setHidden(true);//这种情况下不需要再显示哪个玩家获胜，这个label可以删掉
-    this->setHidden(true);
-    if(isclient)
-        board->show();
-    this->~_21_points();*/
     sendMessage(EndGameServer);
 }
 

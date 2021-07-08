@@ -48,7 +48,7 @@ private:
     QLabel *player_card[4][11];
     QUdpSocket* client;
     qint16 port;
-    bool isclient;
+    int isclient;
     int Seatid;
 
 private slots:

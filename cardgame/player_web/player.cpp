@@ -2,6 +2,7 @@
 #include"include/card.h"
 #include<stdlib.h>
 #include<ctime>
+#include<QDebug>
 /**
  * @brief create a player
  * 
@@ -117,9 +118,10 @@ bool player::self_judge()
     double p,q,r;
     int seed=time(0);
     srand(seed);
-    p=(rand()%10000)/10000;
+    p=(double)(rand()%10000)/10000;
     r=get_score();
     q=(21-r)/13;
+    qDebug()<<p<<" "<<q;
     if(q<0)
        return 0;
     return p<q;
