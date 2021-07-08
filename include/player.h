@@ -22,5 +22,6 @@ public:
     void set_score(int a);
     void init_player();//used to set to next round
     int get_num_cards() const;
+    bool selfjudge();
 };
 #endif

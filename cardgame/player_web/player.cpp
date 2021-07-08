@@ -1,5 +1,6 @@
 ﻿#include"include/player.h"
 #include"include/card.h"
+#include"stdlib.h"
 /**
  * @brief create a player
  * 
@@ -90,4 +91,19 @@ void player::init_player()
 void player::set_name(QString player_name)
 {
     name = player_name;
+}
+bool player::selfjudge()
+{
+    int score=get_score();
+    if(21-score>=13)
+            return bool(1);
+    else
+    {
+        int seed;
+        srand(seed);
+        double p,q;
+        p=(rand()%10000)/10000;
+        q=(21-score)/13;
+        return p<q;
+    }
 }
