@@ -26,5 +26,6 @@ public:
     void add_new_win();
     void clear_fetched_cards();
     int get_num_wins() const;
+    bool self_judge();
 };
 #endif

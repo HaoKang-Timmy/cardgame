@@ -1,5 +1,7 @@
 ﻿#include"include/player.h"
 #include"include/card.h"
+#include<stdlib.h>
+#include<ctime>
 /**
  * @brief create a player
  * 
@@ -109,4 +111,16 @@ void player::clear_fetched_cards()
 int player::get_num_wins() const
 {
     return num_win_round;
+}
+bool player::self_judge()
+{
+    double p,q,r;
+    int seed=time(0);
+    srand(seed);
+    p=(rand()%10000)/10000;
+    r=get_score();
+    q=(21-r)/13;
+    if(q<0)
+       return 0;
+    return p<q;
 }
