@@ -1,11 +1,15 @@
-﻿#include"include/player.h"
+#include"include/player.h"
 #include"include/card.h"
-#include"stdlib.h"
+
+#include<stdlib.h>
+#include<ctime>
+#include<QDebug>
+
 /**
  * @brief create a player
  * 
  */
-player::player():score(0),playerHeap(),win(0),round(0){};
+player::player():score(0),playerHeap(),win(0),round(0), num_win_round(0){};
 
 
 /**
@@ -13,7 +17,7 @@ player::player():score(0),playerHeap(),win(0),round(0){};
  * 
  * @return score
  */
-int player::get_score()
+int player::get_score() const
 {
     return this->score;
 }
@@ -92,18 +96,104 @@ void player::set_name(QString player_name)
 {
     name = player_name;
 }
-bool player::selfjudge()
+
+/**
+ * @brief increment the number of wins of the player
+ *
+ */
+void player::add_new_win()
 {
-    int score=get_score();
-    if(21-score>=13)
-            return bool(1);
-    else
+    num_win_round++;
+}
+
+void player::clear_fetched_cards()
+{
+    playerHeap.removeAllCards();
+}
+
+int player::get_num_wins() const
+{
+    return num_win_round;
+}
+bool player::self_judge()
+{
+    double p,q,r;
+    int seed=time(0);
+    srand(seed);
+    p=(double)(rand()%10000)/10000;
+    r=get_score();
+    q=(21-r)/13;
+    if(q<0)
+       return 0;
+    return p<q;
+}
+
+void player_uno::set_false()
+{
+    has_draw_two[card_uno::RED] = false;
+    has_draw_two[card_uno::BLUE] = false;
+    has_draw_two[card_uno::GREEN] = false;
+    has_draw_two[card_uno::YELLOW] = false;
+    has_reverse[card_uno::RED] = false;
+    has_reverse[card_uno::BLUE] = false;
+    has_reverse[card_uno::GREEN] = false;
+    has_reverse[card_uno::YELLOW] = false;
+    has_skip[card_uno::RED] = false;
+    has_skip[card_uno::BLUE] = false;
+    has_skip[card_uno::GREEN] = false;
+    has_skip[card_uno::YELLOW] = false;
+    has_wild[card_uno::WILD] = false;
+    has_wild[card_uno::WILD_DRAW_FOUR] = false;
+}
+
+player_uno::player_uno(bool human) : is_human(human)
+{
+    set_false();
+}
+
+bool player_uno::no_cards_to_give(card_uno *last_card) const
+{
+    return player_heap.no_cards_to_give(last_card);
+}
+card_uno *player_uno::give_card(card_uno *card)
+{
+    card_uno *ret = player_heap.fetch_certain_card(card);
+    if(ret)
     {
-        int seed;
-        srand(seed);
-        double p,q;
-        p=(rand()%10000)/10000;
-        q=(21-score)/13;
-        return p<q;
+        last_card_given = ret;
+        return ret;
+    }
+    return NULL;
+}
+void player_uno::fetch_card(card_uno *card)
+{
+    player_heap.insert_card(card);
+}
+void player_uno::update_special_card_status()
+{
+    set_false();
+    for(int i = 0; i < player_heap.get_size(); i++)
+    {
+        const card_uno *thiscard = player_heap[i];
+        switch(thiscard->getCardType())
+        {
+        case card_uno::DRAW_TWO:
+            has_draw_two[thiscard->getColor()] = true;
+            break;
+        case card_uno::SKIP:
+            has_skip[thiscard->getColor()] = true;
+            break;
+        case card_uno::REVERSE:
+            has_reverse[thiscard->getColor()] = true;
+            break;
+        case card_uno::WILD:
+            has_wild[card_uno::WILD] = true;
+            break;
+        case card_uno::WILD_DRAW_FOUR:
+            has_wild[card_uno::WILD_DRAW_FOUR] = true;
+            break;
+        default:
+            break;
+        }
     }
 }

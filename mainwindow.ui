@@ -10,6 +10,12 @@
     <height>940</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>1420</width>
@@ -29,18 +35,29 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>445</x>
+      <x>0</x>
       <y>30</y>
-      <width>531</width>
+      <width>1420</width>
       <height>191</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
-      <family>Chalkboard SE</family>
       <pointsize>80</pointsize>
       <weight>75</weight>
       <italic>false</italic>
@@ -53,6 +70,9 @@
     <property name="text">
      <string>Card Game</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
@@ -62,6 +82,12 @@
       <width>1420</width>
       <height>940</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="font">
      <font>
@@ -78,15 +104,20 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>0</x>
       <y>300</y>
-      <width>261</width>
+      <width>1421</width>
       <height>111</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>36</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -98,6 +129,9 @@
     <property name="text">
      <string>请选择游戏！</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -108,9 +142,14 @@
       <height>111</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>
@@ -134,12 +173,24 @@ background-color: rgba(0, 0, 0, 0);</string>
       <height>111</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/buttons/graph/buttons/button1.png);
+color: rgb(255, 255, 255);
 background-color: rgba(191, 64, 64, 0);</string>
     </property>
     <property name="text">
-     <string>under construction...</string>
+     <string>UNO</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -150,6 +201,12 @@ background-color: rgba(191, 64, 64, 0);</string>
       <width>1420</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
     <property name="font">
      <font>
@@ -175,6 +232,12 @@ background-color: rgba(191, 64, 64, 0);</string>
       <height>71</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
       <pointsize>13</pointsize>
@@ -199,9 +262,14 @@ background-color: rgba(191, 64, 64, 0);</string>
       <height>111</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="font">
      <font>
-      <family>Microsoft YaHei UI</family>
       <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>

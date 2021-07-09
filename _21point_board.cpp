@@ -23,5 +23,6 @@ void _21point_Board::on_pushButton_clicked()
 {
     w1->setHidden(false);
     accept();
+    parent()->~QObject();
 }
 

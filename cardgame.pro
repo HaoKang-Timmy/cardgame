@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -14,26 +15,34 @@ SOURCES += \
     cardgame/game/card.cpp \
     cardgame/game/deck.cpp \
     cardgame/player_web/player.cpp \
+    gameserver.cpp \
     main.cpp \
     mainwindow.cpp \
     selectnumplayer.cpp \
-    waitroom.cpp
+    uno_game.cpp \
+    waitroom.cpp \
+    waitserver.cpp
 
 HEADERS += \
     _21_points.h \
     _21point_board.h \
+    const.h \
+    gameserver.h \
     include/card.h \
     include/game.h \
     include/player.h \
     mainwindow.h \
     selectnumplayer.h \
-    waitroom.h
+    uno_game.h \
+    waitroom.h \
+    waitserver.h
 
 FORMS += \
     _21_points.ui \
     _21point_board.ui \
     mainwindow.ui \
     selectnumplayer.ui \
+    uno_game.ui \
     waitroom.ui
 
 # Default rules for deployment.
