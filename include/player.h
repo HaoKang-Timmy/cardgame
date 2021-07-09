@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "card.h"
+#include<QMap>
 // used to make a class for player
 class player
 {
@@ -28,4 +29,30 @@ public:
     int get_num_wins() const;
     bool self_judge();
 };
+
+class player_uno
+{
+private:
+    bool is_human = true;
+    card_uno_heap player_heap;
+    QMap<card_uno::COLOR, bool> has_reverse;
+    QMap<card_uno::COLOR, bool> has_skip;
+    QMap<card_uno::COLOR, bool> has_draw_two;
+    QMap<card_uno::CARD_TYPE, bool> has_wild;
+    void set_false();
+    card_uno *last_card_given;
+public:
+    player_uno(bool human);
+    bool no_cards_to_give(card_uno *last_card) const;
+    card_uno *give_card(card_uno *card);
+    void fetch_card(card_uno *card);
+    bool win() const{return player_heap.is_empty();}
+    void update_special_card_status();
+    bool has_reverse_colored(card_uno::COLOR color) const {return has_reverse[color];}
+    bool has_skip_colored(card_uno::COLOR color) const {return has_skip[color];}
+    bool has_draw_two_colored(card_uno::COLOR color) const{return has_draw_two[color];}
+    bool has_wild_with_type(card_uno::CARD_TYPE type) const{return has_wild[type];}
+    card_uno *get_last_card() const{return last_card_given;}
+};
+
 #endif

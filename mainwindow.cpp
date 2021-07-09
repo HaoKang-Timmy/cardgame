@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "selectnumplayer.h"
+#include "uno_game.h"
 #include <QFontDatabase>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -31,5 +32,13 @@ void MainWindow::on_pushButton_3_clicked()
 {
     this->close();
     this->~MainWindow();
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    uno_game *ug = new uno_game(nullptr);
+    ug->show();
+    this->setHidden(true);
 }
 

@@ -73,4 +73,75 @@
         <file>graph/fonts/Chalkboard-SE-2.ttf</file>
         <file>graph/fonts/msyhbd.ttc</file>
     </qresource>
+    <qresource prefix="/uno_cards/red">
+        <file>graph/uno_cards/red/0.jpg</file>
+        <file>graph/uno_cards/red/1.jpg</file>
+        <file>graph/uno_cards/red/2.jpg</file>
+        <file>graph/uno_cards/red/3.jpg</file>
+        <file>graph/uno_cards/red/4.jpg</file>
+        <file>graph/uno_cards/red/5.jpg</file>
+        <file>graph/uno_cards/red/6.jpg</file>
+        <file>graph/uno_cards/red/7.jpg</file>
+        <file>graph/uno_cards/red/8.jpg</file>
+        <file>graph/uno_cards/red/9.jpg</file>
+        <file>graph/uno_cards/red/10.jpg</file>
+        <file>graph/uno_cards/red/11.jpg</file>
+        <file>graph/uno_cards/red/12.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards/blue">
+        <file>graph/uno_cards/blue/0.jpg</file>
+        <file>graph/uno_cards/blue/1.jpg</file>
+        <file>graph/uno_cards/blue/2.jpg</file>
+        <file>graph/uno_cards/blue/3.jpg</file>
+        <file>graph/uno_cards/blue/4.jpg</file>
+        <file>graph/uno_cards/blue/5.jpg</file>
+        <file>graph/uno_cards/blue/6.jpg</file>
+        <file>graph/uno_cards/blue/7.jpg</file>
+        <file>graph/uno_cards/blue/8.jpg</file>
+        <file>graph/uno_cards/blue/9.jpg</file>
+        <file>graph/uno_cards/blue/10.jpg</file>
+        <file>graph/uno_cards/blue/11.jpg</file>
+        <file>graph/uno_cards/blue/12.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards/green">
+        <file>graph/uno_cards/green/0.jpg</file>
+        <file>graph/uno_cards/green/1.jpg</file>
+        <file>graph/uno_cards/green/2.jpg</file>
+        <file>graph/uno_cards/green/3.jpg</file>
+        <file>graph/uno_cards/green/4.jpg</file>
+        <file>graph/uno_cards/green/5.jpg</file>
+        <file>graph/uno_cards/green/6.jpg</file>
+        <file>graph/uno_cards/green/7.jpg</file>
+        <file>graph/uno_cards/green/8.jpg</file>
+        <file>graph/uno_cards/green/9.jpg</file>
+        <file>graph/uno_cards/green/10.jpg</file>
+        <file>graph/uno_cards/green/11.jpg</file>
+        <file>graph/uno_cards/green/12.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards/yellow">
+        <file>graph/uno_cards/yellow/0.jpg</file>
+        <file>graph/uno_cards/yellow/1.jpg</file>
+        <file>graph/uno_cards/yellow/2.jpg</file>
+        <file>graph/uno_cards/yellow/3.jpg</file>
+        <file>graph/uno_cards/yellow/4.jpg</file>
+        <file>graph/uno_cards/yellow/5.jpg</file>
+        <file>graph/uno_cards/yellow/6.jpg</file>
+        <file>graph/uno_cards/yellow/7.jpg</file>
+        <file>graph/uno_cards/yellow/8.jpg</file>
+        <file>graph/uno_cards/yellow/9.jpg</file>
+        <file>graph/uno_cards/yellow/10.jpg</file>
+        <file>graph/uno_cards/yellow/11.jpg</file>
+        <file>graph/uno_cards/yellow/12.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards/wild">
+        <file>graph/uno_cards/wild/DrawFour.jpg</file>
+        <file>graph/uno_cards/wild/Wild.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards">
+        <file>graph/uno_cards/Cardback.jpg</file>
+    </qresource>
+    <qresource prefix="/uno_cards/direction">
+        <file>graph/uno_cards/direction/0.png</file>
+        <file>graph/uno_cards/direction/1.png</file>
+    </qresource>
 </RCC>

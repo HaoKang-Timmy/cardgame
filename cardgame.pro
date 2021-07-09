@@ -19,6 +19,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     selectnumplayer.cpp \
+    uno_game.cpp \
     waitroom.cpp \
     waitserver.cpp
 
@@ -32,6 +33,7 @@ HEADERS += \
     include/player.h \
     mainwindow.h \
     selectnumplayer.h \
+    uno_game.h \
     waitroom.h \
     waitserver.h
 
@@ -40,6 +42,7 @@ FORMS += \
     _21point_board.ui \
     mainwindow.ui \
     selectnumplayer.ui \
+    uno_game.ui \
     waitroom.ui
 
 # Default rules for deployment.

@@ -125,3 +125,73 @@ bool player::self_judge()
        return 0;
     return p<q;
 }
+
+void player_uno::set_false()
+{
+    has_draw_two[card_uno::RED] = false;
+    has_draw_two[card_uno::BLUE] = false;
+    has_draw_two[card_uno::GREEN] = false;
+    has_draw_two[card_uno::YELLOW] = false;
+    has_reverse[card_uno::RED] = false;
+    has_reverse[card_uno::BLUE] = false;
+    has_reverse[card_uno::GREEN] = false;
+    has_reverse[card_uno::YELLOW] = false;
+    has_skip[card_uno::RED] = false;
+    has_skip[card_uno::BLUE] = false;
+    has_skip[card_uno::GREEN] = false;
+    has_skip[card_uno::YELLOW] = false;
+    has_wild[card_uno::WILD] = false;
+    has_wild[card_uno::WILD_DRAW_FOUR] = false;
+}
+
+player_uno::player_uno(bool human) : is_human(human)
+{
+    set_false();
+}
+
+bool player_uno::no_cards_to_give(card_uno *last_card) const
+{
+    return player_heap.no_cards_to_give(last_card);
+}
+card_uno *player_uno::give_card(card_uno *card)
+{
+    card_uno *ret = player_heap.fetch_certain_card(card);
+    if(ret)
+    {
+        last_card_given = ret;
+        return ret;
+    }
+    return NULL;
+}
+void player_uno::fetch_card(card_uno *card)
+{
+    player_heap.insert_card(card);
+}
+void player_uno::update_special_card_status()
+{
+    set_false();
+    for(int i = 0; i < player_heap.get_size(); i++)
+    {
+        const card_uno *thiscard = player_heap[i];
+        switch(thiscard->getCardType())
+        {
+        case card_uno::DRAW_TWO:
+            has_draw_two[thiscard->getColor()] = true;
+            break;
+        case card_uno::SKIP:
+            has_skip[thiscard->getColor()] = true;
+            break;
+        case card_uno::REVERSE:
+            has_reverse[thiscard->getColor()] = true;
+            break;
+        case card_uno::WILD:
+            has_wild[card_uno::WILD] = true;
+            break;
+        case card_uno::WILD_DRAW_FOUR:
+            has_wild[card_uno::WILD_DRAW_FOUR] = true;
+            break;
+        default:
+            break;
+        }
+    }
+}
