@@ -186,7 +186,6 @@ void _21_points::FetchcardClient(card got)//抽牌
     }
     else
     {
-        qDebug()<<Seatid<<" set";
         QPixmap pix;
         pix.load(got.getPicPath());
         QTransform trans;
@@ -420,10 +419,12 @@ void _21_points::end_Overall_round()//完整的一轮（每个玩家都轮过一
 
 void _21_points::new_Overall_round()//开始新的一轮
 {
+    init_interface();
     current_round ++;
     ui->label_63->setText("第" + QString::number(current_round) + "局");
     for(int i = 0; i < playerNumber; i++)
     {
+
         array_player[i].clear_fetched_cards();//玩家原来抽的牌清空，不过总牌堆不用重置，继续抽即可
         array_player[i].set_score(0);//点数清空
         for(int j = 0; j < 11; j++)
@@ -462,7 +463,6 @@ void _21_points::new_Overall_round()//开始新的一轮
     ui->label_56->setHidden(true);
     ui->label_57->setHidden(true);
     ui->label_58->setHidden(true);
-    qDebug()<<isclient<<" "<<Seatid;
     if(Seatid == 1)
     {
         ui->pushButton->setHidden(false);
@@ -471,7 +471,6 @@ void _21_points::new_Overall_round()//开始新的一轮
     setCurrentPlayer(0);
     if(current_player == Seatid - 1 && !isclient) {
         Sleep(500);
-        qDebug()<<"Fetch:"<<Seatid;
         if(array_player[current_player].self_judge()) {
             sendMessage(FetchCardServer);
         } else {

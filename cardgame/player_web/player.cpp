@@ -121,7 +121,6 @@ bool player::self_judge()
     p=(double)(rand()%10000)/10000;
     r=get_score();
     q=(21-r)/13;
-    qDebug()<<p<<" "<<q;
     if(q<0)
        return 0;
     return p<q;
