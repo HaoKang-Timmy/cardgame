@@ -1,8 +1,10 @@
-﻿#include"include/player.h"
+#include"include/player.h"
 #include"include/card.h"
+
 #include<stdlib.h>
 #include<ctime>
 #include<QDebug>
+
 /**
  * @brief create a player
  * 
