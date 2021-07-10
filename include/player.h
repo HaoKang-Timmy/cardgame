@@ -50,6 +50,7 @@ public:
     void fetch_card(card_uno *card);
     bool win() const{return player_heap.is_empty();}
     void update_card_status(card_uno *last_card);
+    int get_current_card_number() const{return player_heap.get_size();}
 
     //return whether the player have the special card having the given color / type
     bool has_reverse_colored(card_uno::COLOR color) const {return has_reverse[color];}
