@@ -13,6 +13,13 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">selection-color: rgb(108, 205, 250);
+selection-background-color: rgba(108, 205, 250, 80);
+color: rgb(38, 68, 130);
+background-color: rgb(250, 246, 230);
+border-color: rgb(139, 173, 173);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
