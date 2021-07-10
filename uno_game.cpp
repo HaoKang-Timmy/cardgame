@@ -1,6 +1,7 @@
 #include "uno_game.h"
 #include "ui_uno_game.h"
 #include "include/card.h"
+#include <QMessageBox>
 
 uno_game::uno_game(QWidget *parent) :
     QMainWindow(parent),
@@ -253,6 +254,11 @@ void uno_game::on_end_clicked()
 
 /**
  * @brief put the card given out by player into the public heap, if the card doesn't satisfy the condition then draw cards for the player
+ *        玩家出牌的逻辑是：点到相应的牌之后先是slot函数响应，获得该牌的指针，并把牌从玩家的牌堆中移出，再以该指针为参数调用本函数；之后，本函数将牌放入公共牌堆里，并检查这张牌是否符合要求，
+ *        如果不符合要求，就自动给玩家抽一张牌（调用的函数会直接将牌放进玩家的牌堆），此时有功能的牌功能不起作用；
+ *        如果符合要求，该情况下如果牌是功能牌，功能就起作用。
+ *        之后本函数会检查该玩家是否还有牌，如果没有，直接指出游戏结束，该玩家获胜；
+ *        反之，会调用相应的函数将当前的出牌玩家变成下一个玩家。
  * @param player_index the index of the player
  * @param card the pointer to the card given by the player
  */
@@ -292,7 +298,12 @@ void uno_game::player_give_card(int player_index, card_uno *card)
     update_last_card_display();
     if(players[player_index]->win())
     {
-
+        if(player_index)
+            QMessageBox::information(this, "游戏结束！", "Robot" + QString::number(player_index) + "获胜！");
+        else
+            QMessageBox::information(this, "游戏结束！", "您获胜了！");
+        this->close();
+        w1->show();
     }
     go_on_to_the_next_player();
 }
@@ -306,7 +317,6 @@ void uno_game::on_button_card0_clicked()
     card_uno *card = players[0]->give_card(player_cards_mapping[ui->mycard0]);
     if(card) player_give_card(0, card);
 }
-
 
 void uno_game::on_button_card1_clicked()
 {
