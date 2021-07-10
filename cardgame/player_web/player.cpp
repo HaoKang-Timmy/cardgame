@@ -227,3 +227,66 @@ void player_uno::update_card_status(card_uno *last_card)
         else OK_flag.append(false);
     }
 }
+card_uno* player_uno::ai_chosen(card_uno* lastcard,bool reverse,int drawnum)
+{
+    update_card_status(lastcard);
+    card_uno* p=NULL;
+    card_uno* q=NULL;
+    for(int i=0;i<OK_flag.size();i++)
+    {
+        if(OK_flag[i])
+        {
+            p=peek_card(i);
+            break;
+        }
+    }
+    if(drawnum>=4 && has_reverse_colored(lastcard->getColor()))
+    {
+        p=NULL;
+        for(int i=0;i<OK_flag.size();i++)
+        {
+            q=peek_card(i);
+            if(OK_flag[i] && q->getColor()==lastcard->getColor() && q->getCardType()==card_uno::REVERSE)
+            {
+                p=peek_card(i);
+                return p;
+            }
+        }
+    }
+    double fix;
+    int seed=time(0);
+    srand(seed);
+    fix=(double)(rand()%10000)/10000;
+    if(fix>0.3 && has_draw_two_colored(lastcard->getColor()))
+    {
+        p=NULL;
+        for(int i=0;i<OK_flag.size();i++)
+        {
+            q=peek_card(i);
+            if(OK_flag[i] && q->getColor()==lastcard->getColor() && q->getCardType()==card_uno::DRAW_TWO)
+            {
+                p=peek_card(i);
+                return p;
+            }
+        }
+    }
+    else if(drawnum>=0)
+    {
+        p=NULL;
+        for(int i=0;i<OK_flag.size();i++)
+        {
+            q=peek_card(i);
+            if(OK_flag[i] && q->getColor()==lastcard->getColor() && q->getCardType()==card_uno::DRAW_TWO)
+            {
+                p=peek_card(i);
+                return p;
+            }
+        }
+    }
+
+    return p;
+
+
+
+
+}

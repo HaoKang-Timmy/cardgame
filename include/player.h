@@ -36,7 +36,9 @@ class player_uno
 private:
     bool is_human = true;
     card_uno_heap player_heap;
+public:
     QVector<bool> OK_flag;
+private:
     QMap<card_uno::COLOR, bool> has_reverse;
     QMap<card_uno::COLOR, bool> has_skip;
     QMap<card_uno::COLOR, bool> has_draw_two;
@@ -65,6 +67,7 @@ public:
     card_uno* peek_card(int index) {if(index < player_heap.get_size() && index >= 0) return player_heap[index]; else return nullptr;}
     //return whether the card at the given position is able to be given
     bool check_card(int index) const{if(index < player_heap.get_size() && index >= 0) return OK_flag[index]; else return false;}
+    card_uno* ai_chosen(card_uno* lastcard,bool reverse,int drawnum);
 };
 
 #endif
