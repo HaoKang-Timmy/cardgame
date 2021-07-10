@@ -128,6 +128,9 @@ bool player::self_judge()
     return p<q;
 }
 
+/**
+ * @brief set all flag to false
+ */
 void player_uno::set_false()
 {
     has_draw_two[card_uno::RED] = false;
@@ -151,10 +154,21 @@ player_uno::player_uno(bool human) : is_human(human)
     set_false();
 }
 
+/**
+ * @brief check whether the player have no card satisfying the condition to be given out
+ * @param last_card the card given out by the last player in the round
+ * @return true if no
+ */
 bool player_uno::no_cards_to_give(card_uno *last_card) const
 {
     return player_heap.no_cards_to_give(last_card);
 }
+
+/**
+ * @brief the player giving out a specialized card which will be deleted from the player's heap
+ * @param card the pointer to the given card
+ * @return pointer to the given card, or NULL if that card is not in the player's heap
+ */
 card_uno *player_uno::give_card(card_uno *card)
 {
     card_uno *ret = player_heap.fetch_certain_card(card);
@@ -165,11 +179,20 @@ card_uno *player_uno::give_card(card_uno *card)
     }
     return NULL;
 }
+
+/**
+ * @brief add a card into the heap of the player
+ * @param card the pointer to the card
+ */
 void player_uno::fetch_card(card_uno *card)
 {
     player_heap.insert_card(card);
 }
-void player_uno::update_special_card_status()
+
+/**
+ * @brief update the flags in the object showing which card can be given and whether the special cards exist in the heap
+ */
+void player_uno::update_card_status(card_uno *last_card)
 {
     set_false();
     for(int i = 0; i < player_heap.get_size(); i++)
@@ -195,5 +218,12 @@ void player_uno::update_special_card_status()
         default:
             break;
         }
+    }
+
+    OK_flag.clear();
+    for(int i = 0; i < player_heap.get_size(); i++)
+    {
+        if(player_heap[i]->this_card_give_OK(last_card)) OK_flag.append(true);
+        else OK_flag.append(false);
     }
 }

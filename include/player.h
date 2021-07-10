@@ -36,6 +36,7 @@ class player_uno
 private:
     bool is_human = true;
     card_uno_heap player_heap;
+    QVector<bool> OK_flag;
     QMap<card_uno::COLOR, bool> has_reverse;
     QMap<card_uno::COLOR, bool> has_skip;
     QMap<card_uno::COLOR, bool> has_draw_two;
@@ -48,12 +49,21 @@ public:
     card_uno *give_card(card_uno *card);
     void fetch_card(card_uno *card);
     bool win() const{return player_heap.is_empty();}
-    void update_special_card_status();
+    void update_card_status(card_uno *last_card);
+
+    //return whether the player have the special card having the given color / type
     bool has_reverse_colored(card_uno::COLOR color) const {return has_reverse[color];}
     bool has_skip_colored(card_uno::COLOR color) const {return has_skip[color];}
     bool has_draw_two_colored(card_uno::COLOR color) const{return has_draw_two[color];}
     bool has_wild_with_type(card_uno::CARD_TYPE type) const{return has_wild[type];}
+
+    //return thr last card given out by the player
     card_uno *get_last_card() const{return last_card_given;}
+
+    //return the pointer to a card at a given position of this player
+    card_uno* peek_card(int index) {if(index < player_heap.get_size() && index >= 0) return player_heap[index]; else return nullptr;}
+    //return whether the card at the given position is able to be given
+    bool check_card(int index) const{if(index < player_heap.get_size() && index >= 0) return OK_flag[index]; else return false;}
 };
 
 #endif
