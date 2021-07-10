@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/backgrounds/graph/backgrounds/bg1.png);</string>
+     <string notr="true">background-image: url(:/backgrounds/graph/backgrounds/bg2.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -45,7 +45,7 @@
    <widget class="QLabel" name="mycard0">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>340</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -61,7 +61,7 @@
    <widget class="QLabel" name="mycard1">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>380</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -77,7 +77,7 @@
    <widget class="QLabel" name="mycard2">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>420</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -93,7 +93,7 @@
    <widget class="QLabel" name="mycard3">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>460</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -109,7 +109,7 @@
    <widget class="QLabel" name="mycard4">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>500</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -125,23 +125,7 @@
    <widget class="QLabel" name="mycard5">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>730</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
+      <x>540</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -157,7 +141,7 @@
    <widget class="QLabel" name="mycard6">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>580</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -173,7 +157,7 @@
    <widget class="QLabel" name="mycard7">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>620</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -189,7 +173,7 @@
    <widget class="QLabel" name="mycard8">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>660</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -205,7 +189,7 @@
    <widget class="QLabel" name="mycard9">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>700</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -221,7 +205,7 @@
    <widget class="QLabel" name="mycard10">
     <property name="geometry">
      <rect>
-      <x>770</x>
+      <x>740</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -237,7 +221,7 @@
    <widget class="QLabel" name="mycard11">
     <property name="geometry">
      <rect>
-      <x>830</x>
+      <x>780</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -253,7 +237,7 @@
    <widget class="QLabel" name="mycard12">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>820</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -269,7 +253,7 @@
    <widget class="QLabel" name="mycard13">
     <property name="geometry">
      <rect>
-      <x>950</x>
+      <x>860</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -285,7 +269,7 @@
    <widget class="QLabel" name="mycard14">
     <property name="geometry">
      <rect>
-      <x>1010</x>
+      <x>900</x>
       <y>730</y>
       <width>120</width>
       <height>200</height>
@@ -301,8 +285,8 @@
    <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>310</y>
+      <x>490</x>
+      <y>340</y>
       <width>120</width>
       <height>200</height>
      </rect>
@@ -343,104 +327,11 @@
      <string>点击卡牌即可出牌</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_48">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>490</y>
-      <width>331</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>当前牌堆共有10张牌。</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_19">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>310</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_20">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>310</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>850</x>
-      <y>310</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>890</x>
-      <y>310</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_49">
     <property name="geometry">
      <rect>
-      <x>1160</x>
-      <y>590</y>
+      <x>1040</x>
+      <y>730</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -465,11 +356,11 @@
      <string>我</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_55">
+   <widget class="QLabel" name="current_is_player">
     <property name="geometry">
      <rect>
-      <x>1150</x>
-      <y>630</y>
+      <x>1030</x>
+      <y>770</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -495,11 +386,11 @@ color: rgb(255, 225, 25);</string>
      <string>（当前出牌玩家）</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_57">
+   <widget class="QLabel" name="current_is_robot1">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>190</y>
+      <y>240</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -529,7 +420,7 @@ color: rgb(255, 225, 25);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>140</y>
+      <y>190</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -554,58 +445,30 @@ color: rgb(255, 225, 25);</string>
      <string>Robot1</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_50">
+   <widget class="QLabel" name="lastcard">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>220</y>
-      <width>331</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>上一张出牌：</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lastcard_robot1">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>290</y>
+      <x>630</x>
+      <y>340</y>
       <width>120</width>
       <height>200</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);</string>
+     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="direction">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>330</y>
-      <width>191</width>
-      <height>191</height>
+      <x>770</x>
+      <y>340</y>
+      <width>111</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -615,27 +478,11 @@ color: rgb(255, 225, 25);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="lastcard_robot2">
+   <widget class="QLabel" name="current_is_robot2">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>0</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_58">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>60</y>
+      <x>270</x>
+      <y>50</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -661,40 +508,11 @@ color: rgb(255, 225, 25);</string>
      <string>（当前出牌玩家）</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_52">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>90</y>
-      <width>331</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>上一张出牌：</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_53">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>10</y>
+      <x>280</x>
+      <y>0</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -719,23 +537,7 @@ color: rgb(255, 225, 25);</string>
      <string>Robot2</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lastcard_robot3">
-    <property name="geometry">
-     <rect>
-      <x>1280</x>
-      <y>300</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_59">
+   <widget class="QLabel" name="current_is_robot3">
     <property name="geometry">
      <rect>
       <x>1200</x>
@@ -765,35 +567,6 @@ color: rgb(255, 225, 25);</string>
      <string>（当前出牌玩家）</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_54">
-    <property name="geometry">
-     <rect>
-      <x>1260</x>
-      <y>230</y>
-      <width>331</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>上一张出牌：</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_56">
     <property name="geometry">
      <rect>
@@ -821,51 +594,6 @@ color: rgb(255, 225, 25);</string>
     </property>
     <property name="text">
      <string>Robot3</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lastcard_my">
-    <property name="geometry">
-     <rect>
-      <x>1180</x>
-      <y>730</y>
-      <width>120</width>
-      <height>200</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/uno_cards/yellow/graph/uno_cards/yellow/0.jpg);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_60">
-    <property name="geometry">
-     <rect>
-      <x>1160</x>
-      <y>660</y>
-      <width>331</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="text">
-     <string>上一张出牌：</string>
     </property>
    </widget>
    <widget class="QPushButton" name="end">
@@ -899,6 +627,647 @@ background-color: rgba(0, 0, 0, 0);</string>
      <string>退出游戏</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_19">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_20">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_21">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>430</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>470</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_24">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>510</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_25">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_26">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_28">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_29">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_30">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_31">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>10</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_32">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>310</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_33">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>390</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_34">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>270</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_35">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>430</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_36">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>480</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_37">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>350</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_38">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>550</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_39">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>530</y>
+      <width>200</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/uno_cards/graph/uno_cards/Cardback.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card0">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card1">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card2">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card3">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card5">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card4">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card6">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card10">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card9">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card8">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card11">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card7">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card12">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card13">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_card14">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>730</y>
+      <width>120</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>mycard0</zorder>
+   <zorder>mycard1</zorder>
+   <zorder>mycard2</zorder>
+   <zorder>mycard3</zorder>
+   <zorder>mycard4</zorder>
+   <zorder>mycard5</zorder>
+   <zorder>mycard6</zorder>
+   <zorder>mycard7</zorder>
+   <zorder>mycard8</zorder>
+   <zorder>mycard9</zorder>
+   <zorder>mycard10</zorder>
+   <zorder>mycard11</zorder>
+   <zorder>mycard12</zorder>
+   <zorder>mycard13</zorder>
+   <zorder>mycard14</zorder>
+   <zorder>label_18</zorder>
+   <zorder>label_47</zorder>
+   <zorder>label_49</zorder>
+   <zorder>current_is_player</zorder>
+   <zorder>current_is_robot1</zorder>
+   <zorder>label_51</zorder>
+   <zorder>lastcard</zorder>
+   <zorder>direction</zorder>
+   <zorder>current_is_robot2</zorder>
+   <zorder>label_53</zorder>
+   <zorder>current_is_robot3</zorder>
+   <zorder>label_56</zorder>
+   <zorder>end</zorder>
+   <zorder>label_19</zorder>
+   <zorder>label_20</zorder>
+   <zorder>label_21</zorder>
+   <zorder>label_22</zorder>
+   <zorder>label_23</zorder>
+   <zorder>label_24</zorder>
+   <zorder>label_25</zorder>
+   <zorder>label_26</zorder>
+   <zorder>label_27</zorder>
+   <zorder>label_28</zorder>
+   <zorder>label_29</zorder>
+   <zorder>label_30</zorder>
+   <zorder>label_31</zorder>
+   <zorder>label_34</zorder>
+   <zorder>label_32</zorder>
+   <zorder>label_37</zorder>
+   <zorder>label_33</zorder>
+   <zorder>label_35</zorder>
+   <zorder>label_36</zorder>
+   <zorder>label_38</zorder>
+   <zorder>label_39</zorder>
+   <zorder>button_card0</zorder>
+   <zorder>button_card1</zorder>
+   <zorder>button_card2</zorder>
+   <zorder>button_card3</zorder>
+   <zorder>button_card4</zorder>
+   <zorder>button_card5</zorder>
+   <zorder>button_card6</zorder>
+   <zorder>button_card7</zorder>
+   <zorder>button_card8</zorder>
+   <zorder>button_card9</zorder>
+   <zorder>button_card10</zorder>
+   <zorder>button_card11</zorder>
+   <zorder>button_card12</zorder>
+   <zorder>button_card13</zorder>
+   <zorder>button_card14</zorder>
   </widget>
  </widget>
  <resources/>

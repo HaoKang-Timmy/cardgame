@@ -4,8 +4,7 @@
 #include<QVector>
 #include<QHash>
 #include "include/card.h"
-#include<exception>
-
+#include <QDebug>
 COLOR card::getColor() const
 {
     return color;
@@ -416,52 +415,53 @@ void card_uno::setProcesser(int value)
 card_uno::card_uno(COLOR color, card_uno::CARD_TYPE card_unoType, int card_unoNum) : color(color), cardType(card_unoType), cardNum(card_unoNum), cardId(count++) {
     processer = -1;
     QPixmap map;
+    qDebug()<<"card_number: "<<card_unoNum;
     switch (color) {
     case RED:
         if(card_unoType == CARD_TYPE::NUMBERIC)
-            map.load(RED_CARD_PATH + QString::number(card_unoNum) + ".jpg");
+            map.load(RED_CARD_PATH + QString::number(card_unoNum) + ".png");
         else if(card_unoType == CARD_TYPE::SKIP)
-            map.load(RED_CARD_PATH + "12.jpg");
+            map.load(RED_CARD_PATH + "12.png");
         else if(card_unoType == CARD_TYPE::DRAW_TWO)
-            map.load(RED_CARD_PATH + "10.jpg");
+            map.load(RED_CARD_PATH + "10.png");
         else if(card_unoType == CARD_TYPE::REVERSE)
-            map.load(RED_CARD_PATH + "11.jpg");
+            map.load(RED_CARD_PATH + "11.png");
         break;
     case BLUE:
         if(card_unoType == CARD_TYPE::NUMBERIC)
-            map.load(BLUE_CARD_PATH + QString::number(card_unoNum) + ".jpg");
+            map.load(BLUE_CARD_PATH + QString::number(card_unoNum) + ".png");
         else if(card_unoType == CARD_TYPE::SKIP)
-            map.load(BLUE_CARD_PATH + "12.jpg");
+            map.load(BLUE_CARD_PATH + "12.png");
         else if(card_unoType == CARD_TYPE::DRAW_TWO)
-            map.load(BLUE_CARD_PATH + "10.jpg");
+            map.load(BLUE_CARD_PATH + "10.png");
         else if(card_unoType == CARD_TYPE::REVERSE)
-            map.load(BLUE_CARD_PATH + "11.jpg");
+            map.load(BLUE_CARD_PATH + "11.png");
         break;
     case YELLOW:
         if(card_unoType == CARD_TYPE::NUMBERIC)
-            map.load(YELLOW_CARD_PATH + QString::number(card_unoNum) + ".jpg");
+            map.load(YELLOW_CARD_PATH + QString::number(card_unoNum) + ".png");
         else if(card_unoType == CARD_TYPE::SKIP)
-            map.load(YELLOW_CARD_PATH + "12.jpg");
+            map.load(YELLOW_CARD_PATH + "12.png");
         else if(card_unoType == CARD_TYPE::DRAW_TWO)
-            map.load(YELLOW_CARD_PATH + "10.jpg");
+            map.load(YELLOW_CARD_PATH + "10.png");
         else if(card_unoType == CARD_TYPE::REVERSE)
-            map.load(YELLOW_CARD_PATH + "11.jpg");
+            map.load(YELLOW_CARD_PATH + "11.png");
         break;
     case GREEN:
         if(card_unoType == CARD_TYPE::NUMBERIC)
-            map.load(GREEN_CARD_PATH + QString::number(card_unoNum) + ".jpg");
+            map.load(GREEN_CARD_PATH + QString::number(card_unoNum) + ".png");
         else if(card_unoType == CARD_TYPE::SKIP)
-            map.load(GREEN_CARD_PATH + "12.jpg");
+            map.load(GREEN_CARD_PATH + "12.png");
         else if(card_unoType == CARD_TYPE::DRAW_TWO)
-            map.load(GREEN_CARD_PATH + "10.jpg");
+            map.load(GREEN_CARD_PATH + "10.png");
         else if(card_unoType == CARD_TYPE::REVERSE)
-            map.load(GREEN_CARD_PATH + "11.jpg");
+            map.load(GREEN_CARD_PATH + "11.png");
         break;
     case BLACK:
         if(card_unoType == CARD_TYPE::WILD)
-            map.load(":/uno_cards/wild/graph/uno_cards/wild/Wild.jpg");
+            map.load(":/uno_cards/wild/graph/uno_cards/wild/Wild.png");
         else if(card_unoType == CARD_TYPE::WILD_DRAW_FOUR)
-            map.load(":/uno_cards/wild/graph/uno_cards/wild/DrawFour.jpg");
+            map.load(":/uno_cards/wild/graph/uno_cards/wild/DrawFour.png");
     default:
         break;
     }
@@ -479,11 +479,14 @@ bool compare(QPair<card_uno*, int>a, QPair<card_uno*, int>b)
  */
 void card_uno_heap::init_random()
 {
+    card_uno::CreateAllCards();
     std::srand(time(NULL));
     QVector<QPair<card_uno*, int>> random;
+    qDebug()<<"number of all cards: "<<card_uno::allCards.size();
     for(int i = 0; i < card_uno::allCards.size(); i++)
     {
-        random.append(QPair<card_uno*, int>(card_uno::allCards[i], std::rand()));
+        if(card_uno::allCards[i]->cardType != card_uno::WILD)
+            random.append(QPair<card_uno*, int>(card_uno::allCards[i], std::rand()));
     }
     std::sort(random.begin(), random.end(), compare);
     for(int i = 0; i < random.size(); i++) cards.append(random[i].first);
@@ -566,4 +569,21 @@ card_uno *card_uno_heap::fetch_certain_card(card_uno *card)
     if(index == -1) return NULL;
     else cards.remove(index);
     return card;
+}
+
+/**
+ * @brief card_uno::getPicture
+ * @return the pixmap object of the card, containing the picture
+ */
+const QPixmap& card_uno::getPicture() const
+{
+    return this->cardPic;
+}
+
+void card_uno::set_picture(QString path)
+{
+    QPixmap map;
+    map.load(path);
+    map = map.scaled(120, 200, Qt::KeepAspectRatio);
+    this->cardPic = map;
 }

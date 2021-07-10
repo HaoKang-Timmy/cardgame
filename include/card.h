@@ -48,13 +48,14 @@ class card_uno
 {
 public:
 
+    card_uno(){}
     enum COLOR { BLUE, GREEN, RED, YELLOW, BLACK };
     enum CARD_TYPE { NUMBERIC, WILD, WILD_DRAW_FOUR, SKIP, REVERSE, DRAW_TWO };
     const QString BLUE_CARD_PATH = ":/uno_cards/blue/graph/uno_cards/blue/";
-    const QString RED_CARD_PATH = ":/uno_cards/blue/graph/uno_cards/red/";
-    const QString GREEN_CARD_PATH = ":/uno_cards/blue/graph/uno_cards/green/";
-    const QString YELLOW_CARD_PATH = ":/uno_cards/blue/graph/uno_cards/yellow/";
-    const QString WILD_CARD_PATH = ":/uno_cards/blue/graph/uno_cards/wild/";
+    const QString RED_CARD_PATH = ":/uno_cards/red/graph/uno_cards/red/";
+    const QString GREEN_CARD_PATH = ":/uno_cards/green/graph/uno_cards/green/";
+    const QString YELLOW_CARD_PATH = ":/uno_cards/yellow/graph/uno_cards/yellow/";
+    const QString WILD_CARD_PATH = ":/uno_cards/wild/graph/uno_cards/wild/";
 
     // generate cards
     static void CreateAllCards();
@@ -66,6 +67,7 @@ public:
     CARD_TYPE getCardType() const;
     int getCardId() const;
     int getCardNum() const;
+    const QPixmap& getPicture() const;
 
     static COLOR getColorById(int id);
     static CARD_TYPE getCardTypeById(int id);
@@ -88,6 +90,9 @@ public:
     // check whether a card can be after this card
     bool next_card_give_OK(card_uno *next_card);
     bool this_card_give_OK(card_uno *last_card);
+
+    // set the picture of the card
+    void set_picture(QString path);
 
 protected:
     COLOR color;
