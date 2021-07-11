@@ -129,6 +129,7 @@ void uno_game::slotTiming()
         if(card) {
             qDebug()<<"fetch card";
             player_give_card(current_player, card);
+            players[current_player]->give_card(card);
         }
         else {
             qDebug()<<"no card";
