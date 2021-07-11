@@ -31,6 +31,9 @@ public:
 
 
 private slots:
+
+    void slotTiming();
+
     void on_end_clicked();
 
     void on_button_card0_clicked();
@@ -77,6 +80,7 @@ private:
     card_uno *last_card = nullptr;
     void update_card_display(QLabel *card_display, card_uno *card, int rotate_90);
     bool skip_flag = false;
+    QTimer *m_timer;
 };
 
 #endif // UNO_GAME_H

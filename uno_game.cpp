@@ -1,6 +1,7 @@
 #include "uno_game.h"
 #include "ui_uno_game.h"
 #include "include/card.h"
+#include "qtimer.h"
 #include <QMessageBox>
 
 uno_game::uno_game(QWidget *parent) :
@@ -113,6 +114,28 @@ void uno_game::game_init()
     ui->current_is_robot1->setHidden(true);
     ui->current_is_robot2->setHidden(true);
     ui->current_is_robot3->setHidden(true);
+
+
+    m_timer = new QTimer(this);
+    this->connect(m_timer,SIGNAL(timeout()),this,SLOT(slotTiming()));
+    m_timer->start(2000);
+}
+
+void uno_game::slotTiming()
+{
+    if(current_player != 0) {
+        qDebug()<<current_player;
+        card_uno *card = players[current_player]->ai_chosen(last_card,direction_is_clockwise,draw_card_number_accumulate);
+        if(card) {
+            qDebug()<<"fetch card";
+            player_give_card(current_player, card);
+        }
+        else {
+            qDebug()<<"no card";
+            player_fetch_card(current_player, 2);
+            go_on_to_the_next_player();
+        }
+    }
 }
 
 /**
@@ -127,7 +150,7 @@ void uno_game::player_fetch_card(int player_index, int numcard)
     for(int i = 0; i < numcard && public_cards.get_size() > 0; i++)
     {//the number of the cards to fetch also depends on whether there are enough cards in the heap
         card = public_cards.random_fetch_card();
-        qDebug()<<public_cards.get_size();
+        //qDebug()<<public_cards.get_size();
         card->setProcesser(player_index);
         players[player_index]->fetch_card(card);
     }
@@ -264,6 +287,7 @@ void uno_game::on_end_clicked()
  */
 void uno_game::player_give_card(int player_index, card_uno *card)
 {
+    qDebug()<<card->getColor()<<card->getCardType();
     if(!(player_index >= 0) || !(player_index < 4)) return;
     if(!card->this_card_give_OK(last_card))
     {
