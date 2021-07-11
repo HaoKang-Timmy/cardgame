@@ -240,6 +240,7 @@ card_uno* player_uno::ai_chosen(card_uno* lastcard,bool reverse,int drawnum)
             break;
         }
     }
+    if(lastcard == nullptr) return p;
     if(drawnum>=4 && has_reverse_colored(lastcard->getColor()))
     {
         p=NULL;

@@ -28,6 +28,7 @@ public:
     void reverse();//change the direction
     void update_direction_display();
     void go_on_to_the_next_player();
+    void no_card_punishment();
 
 
 private slots:

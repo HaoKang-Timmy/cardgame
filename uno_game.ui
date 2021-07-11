@@ -390,7 +390,7 @@ color: rgb(255, 225, 25);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>240</y>
+      <y>190</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -420,7 +420,7 @@ color: rgb(255, 225, 25);</string>
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>190</y>
+      <y>140</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -541,7 +541,7 @@ color: rgb(255, 225, 25);</string>
     <property name="geometry">
      <rect>
       <x>1200</x>
-      <y>200</y>
+      <y>190</y>
       <width>221</width>
       <height>61</height>
      </rect>
@@ -571,7 +571,7 @@ color: rgb(255, 225, 25);</string>
     <property name="geometry">
      <rect>
       <x>1280</x>
-      <y>150</y>
+      <y>140</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -1203,6 +1203,151 @@ background-color: rgba(0, 0, 0, 0);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="fetch0">
+    <property name="geometry">
+     <rect>
+      <x>1040</x>
+      <y>820</y>
+      <width>331</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>无牌可出，抽2张牌</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fetch1">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>331</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>无牌可出，抽2张牌</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fetch2">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>90</y>
+      <width>331</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>无牌可出，抽2张牌</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fetch3">
+    <property name="geometry">
+     <rect>
+      <x>1190</x>
+      <y>230</y>
+      <width>331</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>无牌可出，抽2张牌</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="draw">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>470</y>
+      <width>331</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>+0</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>mycard0</zorder>
    <zorder>mycard1</zorder>
@@ -1268,6 +1413,11 @@ background-color: rgba(0, 0, 0, 0);</string>
    <zorder>button_card12</zorder>
    <zorder>button_card13</zorder>
    <zorder>button_card14</zorder>
+   <zorder>fetch0</zorder>
+   <zorder>fetch3</zorder>
+   <zorder>fetch2</zorder>
+   <zorder>fetch1</zorder>
+   <zorder>draw</zorder>
   </widget>
  </widget>
  <resources/>

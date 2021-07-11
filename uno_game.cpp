@@ -42,7 +42,7 @@ void uno_game::game_init()
 
     //fetch the top card (not wild) from the rest of cards (won't remove it) to let it be the start card
     int i = 0;
-    while(i < public_cards.get_size() && public_cards[i]->getColor() == card_uno::BLACK) i++;
+    while(i < public_cards.get_size() && (public_cards[i]->getColor() == card_uno::BLACK || public_cards[i]->getCardType() !=  card_uno::NUMBERIC)) i++;
     last_card = public_cards[i];
 
     //initiate the cards display
@@ -102,6 +102,10 @@ void uno_game::game_init()
     update_card_display(ui->label_30, &temp, false);
     update_card_display(ui->label_31, &temp, false);
     update_card_display(ui->label_18, &temp, false);
+    ui->fetch0->setHidden(true);
+    ui->fetch1->setHidden(true);
+    ui->fetch2->setHidden(true);
+    ui->fetch3->setHidden(true);
 
     //display the direction
     update_direction_display();
@@ -118,7 +122,9 @@ void uno_game::game_init()
 
     m_timer = new QTimer(this);
     this->connect(m_timer,SIGNAL(timeout()),this,SLOT(slotTiming()));
-    m_timer->start(2000);
+    m_timer->start(3000);
+
+    ui->draw->setText("+0");
 }
 
 void uno_game::slotTiming()
@@ -129,13 +135,16 @@ void uno_game::slotTiming()
         if(card) {
             qDebug()<<"fetch card";
             player_give_card(current_player, card);
+            update_last_card_display();
             players[current_player]->give_card(card);
         }
         else {
             qDebug()<<"no card";
-            player_fetch_card(current_player, 2);
+            if(draw_card_number_accumulate > 0)
+                no_card_punishment();//if don't give card and there's draw accumulate, then fetch card
             go_on_to_the_next_player();
         }
+        update_last_card_display();
     }
 }
 
@@ -240,6 +249,11 @@ void uno_game::reverse()
  */
 void uno_game::go_on_to_the_next_player()
 {
+    ui->draw->setText("+" + QString::number(draw_card_number_accumulate));
+    ui->fetch0->setHidden(true);
+    ui->fetch1->setHidden(true);
+    ui->fetch2->setHidden(true);
+    ui->fetch3->setHidden(true);
     if(direction_is_clockwise)
     {
         if(!skip_flag)
@@ -262,7 +276,8 @@ void uno_game::go_on_to_the_next_player()
     skip_flag = false;
     if(players[current_player]->no_cards_to_give(last_card))
     {
-        player_fetch_card(current_player, 2);
+        no_card_punishment();
+        update_player_card_display();
         go_on_to_the_next_player();
     }
 }
@@ -292,12 +307,7 @@ void uno_game::player_give_card(int player_index, card_uno *card)
     if(!(player_index >= 0) || !(player_index < 4)) return;
     if(!card->this_card_give_OK(last_card))
     {
-        if(draw_card_number_accumulate > 0)
-        {
-            player_fetch_card(player_index, draw_card_number_accumulate);
-            draw_card_number_accumulate = 0;
-        }
-        else player_fetch_card(player_index, 1);
+        no_card_punishment();
     }
     else
     {
@@ -456,3 +466,47 @@ void uno_game::on_button_card14_clicked()
     if(card) player_give_card(0, card);
 }
 
+/**
+ * @brief automatically fetch card when the player have no card to give out and display prompt
+ */
+void uno_game::no_card_punishment()
+{
+    int card_number;
+    if(draw_card_number_accumulate > 0)
+    {
+        card_number = draw_card_number_accumulate;
+        player_fetch_card(current_player, draw_card_number_accumulate);
+        draw_card_number_accumulate = 0;//clear the accumulate
+        last_card = nullptr;
+        update_last_card_display();
+    }
+    else
+    {
+        card_number = 2;
+        player_fetch_card(current_player, 2);
+    }
+    ui->fetch0->setHidden(true);
+    ui->fetch1->setHidden(true);
+    ui->fetch2->setHidden(true);
+    ui->fetch3->setHidden(true);
+    switch (current_player) {
+    case 0:
+        ui->fetch0->setText("无牌可出，抽" + QString::number(card_number) + "张牌");
+        ui->fetch0->setHidden(false);
+        break;
+    case 1:
+        ui->fetch1->setText("无牌可出，抽" + QString::number(card_number) + "张牌");
+        ui->fetch1->setHidden(false);
+        break;
+    case 2:
+        ui->fetch2->setText("无牌可出，抽" + QString::number(card_number) + "张牌");
+        ui->fetch2->setHidden(false);
+        break;
+    case 3:
+        ui->fetch3->setText("无牌可出，抽" + QString::number(card_number) + "张牌");
+        ui->fetch3->setHidden(false);
+        break;
+    }
+    qDebug()<<"player"<<current_player<<" get punished";
+    update_player_card_display();
+}

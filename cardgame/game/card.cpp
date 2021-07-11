@@ -541,6 +541,7 @@ bool card_uno::next_card_give_OK(card_uno *next_card)
  */
 bool card_uno::this_card_give_OK(card_uno *last_card)
 {
+    if(last_card == nullptr) return true;
     return last_card->next_card_give_OK(this);
 }
 
